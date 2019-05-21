@@ -2,7 +2,6 @@
 public class FuncshenLink {
 	private int a;
 	private int b;
-	private static int p=15486907;
 	
 	public FuncshenLink(int a,int b) {
 		this.a=a;
