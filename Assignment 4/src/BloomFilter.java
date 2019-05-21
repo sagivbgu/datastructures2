@@ -5,43 +5,48 @@ import java.io.FileReader;
 import java.io.IOException;
 public class BloomFilter {
 	private String Hashfunncshens="hash_functions.txt";
-	private LinkedList<int[]> FuncshenList;
-    private byte[] set;
-    private int keySize, setSize, size;
+	FuncshenLink[] funcshens;
+    private byte[] BloomFilterArray;
+    private int  ArraySize, size;
 	
 	
-public BloomFilter(int capacity,int k) {
-	
-	FuncshenList=new LinkedList<int[]>();
-    setSize = capacity;
-    set = new byte[setSize];
-    keySize = k;
+public BloomFilter(int capacity) {
+	InitFuncshensArray();
+	ArraySize = capacity;
+    BloomFilterArray = new byte[ArraySize];
     size = 0;
-	
 	}
 	
 	
-private  void LoudHashFuncshens() {
+
+
+
+
+
+private  void InitFuncshensArray() {
 	String input;
+	int NumOfFuncshens=0;
 	try {
         // FileReader reads text files in the default encoding.
-        FileReader fileReader = 
-            new FileReader(Hashfunncshens);
-
+        FileReader fileReader =  new FileReader(Hashfunncshens);
+        
         // Always wrap FileReader in BufferedReader.
-        BufferedReader bufferedReader = 
-            new BufferedReader(fileReader);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        while((input=bufferedReader.readLine()) != null) {
-            String[] str=input.split("_");
-            int[] array=new int[2];
-            array[0]= Integer.parseInt(str[0]);
-            array[1]= Integer.parseInt(str[1]);
-            FuncshenList.add(array);
+        while((input=bufferedReader.readLine()) != null) {   //get the number of funcshens
+            NumOfFuncshens++;
         }   
-
-        // Always close files.
-        bufferedReader.close();         
+        bufferedReader.close();    
+        
+        funcshens=new FuncshenLink[NumOfFuncshens]; //init the funcshens array;
+        BufferedReader bufferedReader1 = new BufferedReader(fileReader);
+        int i=0;
+        while((input=bufferedReader1.readLine()) != null) {
+            String[] str=input.split("_");
+            funcshens[i]=new FuncshenLink(Integer.parseInt(str[0]),Integer.parseInt(str[1]));
+            i++;
+        }
+        bufferedReader1.close();      
     }
     catch(FileNotFoundException ex) {
         System.out.println(
