@@ -12,6 +12,7 @@ public class BloomFilter {
 	
 public BloomFilter(int capacity) {
 	InitFuncshensArray();
+	MakeBadPasswords();
 	ArraySize = capacity;
     BloomFilterArray = new byte[ArraySize];
     size = 0;
