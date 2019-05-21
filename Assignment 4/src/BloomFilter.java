@@ -11,15 +11,16 @@ public class BloomFilter {
 	
 	
 public BloomFilter(int capacity) {
-	InitFuncshensArray();
-	MakeBadPasswords();
 	ArraySize = capacity;
     BloomFilterArray = new byte[ArraySize];
     size = 0;
+	InitFuncshensArray();
+	MakeBadPasswords();
+
 	}
 	
 private  void MakeBadPasswords() {	
-	String BadPasswords="bad_passwords.txt";
+	String BadPasswords="src/bad_passwords.txt";
 	String input;
 	int HernerValue=0;
 	try {
@@ -52,18 +53,18 @@ private  void MakeBadPasswords() {
 	
 }
 
-private void InsertToFilter(int hernerValue) {
+public void InsertToFilter(int hernerValue) {
 	
 	for(int i=0;i<funcshens.length;i++)
 	{
-		int value=(funcshens[i].getA()*hernerValue+funcshens[i].getB())%p;
+		int value=((funcshens[i].getA()*hernerValue+funcshens[i].getB())%p)%ArraySize;
 		BloomFilterArray[value]=1;
 	}
 		
 }
 
 private  void InitFuncshensArray() {
-    String Hashfunncshens="hash_functions.txt";
+    String Hashfunncshens="src/hash_functions.txt";
 	String input;
 	int NumOfFuncshens=0;
 	try {
@@ -76,17 +77,19 @@ private  void InitFuncshensArray() {
         while((input=bufferedReader.readLine()) != null) {   //get the number of funcshens
             NumOfFuncshens++;
         }   
-        bufferedReader.close();    
+        bufferedReader.close();
         
         funcshens=new FuncshenLink[NumOfFuncshens]; //init the funcshens array;
-        BufferedReader bufferedReader1 = new BufferedReader(fileReader);
+        FileReader fileReader1 =  new FileReader(Hashfunncshens);
+        BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
         int i=0;
         while((input=bufferedReader1.readLine()) != null) {
             String[] str=input.split("_");
             funcshens[i]=new FuncshenLink(Integer.parseInt(str[0]),Integer.parseInt(str[1]));
             i++;
         }
-        bufferedReader1.close();      
+        bufferedReader1.close();   
+ 
     }
     catch(FileNotFoundException ex) {
         System.out.println(
