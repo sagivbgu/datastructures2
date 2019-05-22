@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 public class BloomFilter {
-	FuncshenLink[] funcshens;
+	private FuncshenLink[] funcshens;
     private byte[] BloomFilterArray;
     private int  ArraySize, size;
 	private static int p=15486907;
@@ -62,6 +62,20 @@ public void InsertToFilter(int hernerValue) {
 	}
 		
 }
+public static int MakeHash(String input,int a,int b, int size) {
+	int HernerValue=0;
+	int length=input.length();
+	for(int i=0;i<length;i++)
+	{
+		Character c=input.charAt(0);
+		HernerValue=HernerValue+c.hashCode()*(256^(length-(i+1) ));
+		input=input.substring(0);
+	}
+	int value=((a*HernerValue+b)%p)%size;	
+	
+	return value;
+}
+
 
 private  void InitFuncshensArray() {
     String Hashfunncshens="src/hash_functions.txt";
