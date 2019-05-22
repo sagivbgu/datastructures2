@@ -1,117 +1,64 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class BloomFilter {
-	private FuncshenLink[] funcshens;
-    private byte[] BloomFilterArray;
-    private int  ArraySize, size;
-	private static int p=15486907;
-	
-	
-public BloomFilter(int capacity) {
-	ArraySize = capacity;
-    BloomFilterArray = new byte[ArraySize];
-    size = 0;
-	InitFuncshensArray();
-	MakeBadPasswords();
+    private HashFunctionData[] functions;
+    private boolean[] bloomFilterArray;
+    private static int p = 15486907;
 
-	}
-	
-private  void MakeBadPasswords() {	
-	String BadPasswords="src/bad_passwords.txt";
-	String input;
-	int HernerValue=0;
-	try {
-        // FileReader reads text files in the default encoding.
-        FileReader fileReader =  new FileReader(BadPasswords);
-        
-        // Always wrap FileReader in BufferedReader.
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+    public BloomFilter(String tableSize, String hashFunctionsFilePath) {
+        int arraySize = Integer.parseInt(tableSize);  // TODO: Check input
+        bloomFilterArray = new boolean[arraySize];
+        initFunctionsArray(hashFunctionsFilePath);
+    }
 
-        while((input=bufferedReader.readLine()) != null) {
-        	int length=input.length();
-        	for(int i=0;i<length;i++)
-        	{
-        		Character c=input.charAt(0);
-        		HernerValue=HernerValue+c.hashCode()*(256^(length-(i+1) ));
-        		input=input.substring(0);
-        	}
-        	InsertToFilter(HernerValue);
+    public void updateTable(String valuesFilePath) {
+        try {
+            Files.lines(Path.of(valuesFilePath)).forEach(value -> {
+                long hornerValue = Utils.getHornerValue(value);
+                InsertToFilter(hornerValue);
+            });
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't update bloom filter table", e);
         }
-        bufferedReader.close();      
     }
-    catch(FileNotFoundException ex) {
-        System.out.println(
-            "Unable to open file");                
-    }
-    catch(IOException ex) {
-        System.out.println("Error reading file");                  
 
-    }
-	
-}
-
-public void InsertToFilter(int hernerValue) {
-	
-	for(int i=0;i<funcshens.length;i++)
-	{
-		int value=((funcshens[i].getA()*hernerValue+funcshens[i].getB())%p)%ArraySize;
-		BloomFilterArray[value]=1;
-	}
-		
-}
-public static int MakeHash(String input,int a,int b, int size) {
-	int HernerValue=0;
-	int length=input.length();
-	for(int i=0;i<length;i++)
-	{
-		Character c=input.charAt(0);
-		HernerValue=HernerValue+c.hashCode()*(256^(length-(i+1) ));
-		input=input.substring(0);
-	}
-	int value=((a*HernerValue+b)%p)%size;	
-	
-	return value;
-}
-
-
-private  void InitFuncshensArray() {
-    String Hashfunncshens="src/hash_functions.txt";
-	String input;
-	int NumOfFuncshens=0;
-	try {
-        // FileReader reads text files in the default encoding.
-        FileReader fileReader =  new FileReader(Hashfunncshens);
-        
-        // Always wrap FileReader in BufferedReader.
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        while((input=bufferedReader.readLine()) != null) {   //get the number of funcshens
-            NumOfFuncshens++;
-        }   
-        bufferedReader.close();
-        
-        funcshens=new FuncshenLink[NumOfFuncshens]; //init the funcshens array;
-        FileReader fileReader1 =  new FileReader(Hashfunncshens);
-        BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
-        int i=0;
-        while((input=bufferedReader1.readLine()) != null) {
-            String[] str=input.split("_");
-            funcshens[i]=new FuncshenLink(Integer.parseInt(str[0]),Integer.parseInt(str[1]));
-            i++;
+    public void InsertToFilter(long hornerValue) {
+        for (HashFunctionData function : functions) {
+            int index = Utils.getHash(hornerValue, function.getA(), function.getB(), bloomFilterArray.length);
+            bloomFilterArray[index] = true;
         }
-        bufferedReader1.close();   
- 
     }
-    catch(FileNotFoundException ex) {
-        System.out.println(
-            "Unable to open file");                
-    }
-    catch(IOException ex) {
-        System.out.println("Error reading file");                  
 
+    private void initFunctionsArray(String hashFunctionsFilePath) {
+        int numOfFunctions = countLinesInFile(hashFunctionsFilePath);
+        this.functions = new HashFunctionData[numOfFunctions];
+        updateFunctionsArray(hashFunctionsFilePath);
     }
-}
+
+    private int countLinesInFile(String filePath) {
+        try {
+            return (int) Files.lines(Path.of(filePath)).count();
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't count lines in file", e);
+        }
+    }
+
+    private void updateFunctionsArray(String hashFunctionsFilePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(hashFunctionsFilePath))) {
+            int i = 0;
+            String line = br.readLine();
+            while (line != null) {
+                String[] str = line.split("_");
+                this.functions[i] = new HashFunctionData(Integer.parseInt(str[0]), Integer.parseInt(str[1]));
+                i++;
+                line = br.readLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't initiate bloom filter functions array", e);
+        }
+    }
 }
