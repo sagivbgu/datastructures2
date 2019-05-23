@@ -30,7 +30,7 @@ class HashTable {
         return GetElementsNum() == 0;
     } // TODO: Remove this code?
 
-    public HashListElement search(int key) {
+    public HashListElement search(long key) {
         int index = hashFunction(key);
         return this.hashLists[index].get(key);
     }
