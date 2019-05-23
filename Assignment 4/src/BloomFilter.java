@@ -15,18 +15,6 @@ public class BloomFilter {
         bloomFilterArray = new boolean[arraySize];
         initFunctionsArray(hashFunctionsFilePath);
     }
-    public boolean ConfirmPassword(String PassWord) {
-    	
-        for (HashFunctionData function : functions) {
-            int index = Utils.getHash(Utils.getHornerValue(PassWord), function.getA(), function.getB(), bloomFilterArray.length);
-            if(bloomFilterArray[index] == false)
-            {
-            	return false;
-            }
-        }
-    	return true;
-    
-    }
 
     public void updateTable(String valuesFilePath) {
         try {
@@ -43,6 +31,39 @@ public class BloomFilter {
         for (HashFunctionData function : functions) {
             int index = Utils.getHash(hornerValue, function.getA(), function.getB(), bloomFilterArray.length);
             bloomFilterArray[index] = true;
+        }
+    }
+
+    public String getFalsePositivePercentage(HashTable hashTable, String requestedPasswordsFilePath) {
+        int i = 0;
+        int falsePositives = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(requestedPasswordsFilePath))) {
+            String line = br.readLine();
+            while (line != null) {
+                long hornerValue = Utils.getHornerValue(line);
+                if (isKeyInBloomFilter(hornerValue) && hashTable.search(hornerValue) == null) {
+                    falsePositives++;
+                }
+
+                i++;
+                line = br.readLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't get false positive percentage", e);
+        }
+
+        return String.valueOf((double) falsePositives / i);
+    }
+
+    public String getRejectedPasswordsAmount(String requestedPasswordsFilePath) {
+        try {
+            long rejectedPasswords = Files.lines(Path.of(requestedPasswordsFilePath))
+                    .filter(pass -> isKeyInBloomFilter(Utils.getHornerValue(pass)))
+                    .count();
+            return String.valueOf(rejectedPasswords);
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't get rejected passwords amount", e);
         }
     }
 
@@ -73,5 +94,15 @@ public class BloomFilter {
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't initiate bloom filter functions array", e);
         }
+    }
+
+    private boolean isKeyInBloomFilter(long hornerValue) {
+        for (HashFunctionData function : functions) {
+            int index = Utils.getHash(hornerValue, function.getA(), function.getB(), bloomFilterArray.length);
+            if (!bloomFilterArray[index]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
