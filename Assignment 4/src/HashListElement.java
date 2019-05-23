@@ -1,14 +1,14 @@
 public class HashListElement {
-    private int key;
+    private long key;
     private HashListElement next;
 
-    public HashListElement(int key)
+    public HashListElement(long key)
     {
         this.key = key;
         this.next = null;
     }
 
-    public int getKey() {
+    public long getKey() {
         return key;
     }
 
