@@ -8,7 +8,11 @@ class HashTable {
     private int elementsNum;
 
     public HashTable(String size) {
-        this.size = Integer.parseInt(size); // TODO: Input check
+        try {
+            this.size = Integer.parseInt(size);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Hash table size isn't an integer", e);
+        }
         this.elementsNum = 0;
         this.hashLists = getHashListsArray(this.size);
     }

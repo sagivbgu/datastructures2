@@ -11,7 +11,12 @@ public class BloomFilter {
     private static int p = 15486907;
 
     public BloomFilter(String tableSize, String hashFunctionsFilePath) {
-        int arraySize = Integer.parseInt(tableSize);  // TODO: Check input
+        int arraySize;
+        try {
+            arraySize = Integer.parseInt(tableSize);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Bloom filter table size isn't an integer", e);
+        }
         bloomFilterArray = new boolean[arraySize];
         initFunctionsArray(hashFunctionsFilePath);
     }
