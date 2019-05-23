@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 class HashTable {
     private HashList[] hashLists;
@@ -24,6 +25,17 @@ class HashTable {
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't update hash table", e);
         }
+    }
+
+    public String getSearchTime(String requestedPasswordsFilePath) {
+        return Utils.getElapsedTimeInMs(() -> {
+            try {
+                Files.lines(Paths.get(requestedPasswordsFilePath))
+                        .forEach(password -> search(Utils.getHornerValue(password)));
+            } catch (IOException e) {
+                throw new RuntimeException("Error reading file. Can't get hash table search time", e);
+            }
+        });
     }
 
     public int GetElementsNum() {

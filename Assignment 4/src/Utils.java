@@ -15,4 +15,11 @@ public class Utils {
     public static int getHash(long hornerValue, int a, int b, int m) {
         return (int) ((a * hornerValue + b) % p) % m;
     }
+
+    public static String getElapsedTimeInMs(Runnable action) {
+        long startTime = System.nanoTime();
+        action.run();
+        long elapsedNanos = System.nanoTime() - startTime;
+        return String.valueOf(elapsedNanos / 1000000);
+    }
 }
