@@ -2,7 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
+
 
 public class BloomFilter {
     private HashFunctionData[] functions;
@@ -13,6 +14,18 @@ public class BloomFilter {
         int arraySize = Integer.parseInt(tableSize);  // TODO: Check input
         bloomFilterArray = new boolean[arraySize];
         initFunctionsArray(hashFunctionsFilePath);
+    }
+    public boolean ConfirmPassword(String PassWord) {
+    	
+        for (HashFunctionData function : functions) {
+            int index = Utils.getHash(Utils.getHornerValue(PassWord), function.getA(), function.getB(), bloomFilterArray.length);
+            if(bloomFilterArray[index] == false)
+            {
+            	return false;
+            }
+        }
+    	return true;
+    
     }
 
     public void updateTable(String valuesFilePath) {
