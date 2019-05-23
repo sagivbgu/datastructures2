@@ -38,14 +38,6 @@ class HashTable {
         });
     }
 
-    public int GetElementsNum() {
-        return this.elementsNum;
-    } // TODO: Remove this code?
-
-    public boolean isEmpty() {
-        return GetElementsNum() == 0;
-    } // TODO: Remove this code?
-
     public HashListElement search(long key) {
         int index = hashFunction(key);
         return this.hashLists[index].get(key);
