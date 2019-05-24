@@ -4,7 +4,7 @@ public class Node {
 
 		int count; // number of keys in node
 
-		char key[];  // array of key values
+		String key[];  // array of key values
 
 	    Node child[]; //array of references
 
@@ -29,7 +29,7 @@ public class Node {
 
 			this.parent = parent; //assign parent
 
-			key = new char[2*t - 1];  // array of proper size
+			key = new String[2*t - 1];  // array of proper size
 
 			child = new Node[2*t]; // array of refs proper size
 
@@ -42,7 +42,7 @@ public class Node {
 	// this is method to return key value at index position|
 	// -----------------------------------------------------
 
-		public char getValue(int index)
+		public String getValue(int index)
 		{
 			return key[index];
 		}

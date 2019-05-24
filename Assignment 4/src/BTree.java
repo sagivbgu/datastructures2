@@ -1,18 +1,12 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class BTree {
-	// here are variables available to tree
 
 		int order; // order of tree
-
 		Node root;  //every tree has at least a root node
-
-
-	// ---------------------------------------------------------
-	// here is the constructor for tree                        |
-	// ---------------------------------------------------------
 
 
 		public BTree(String order)
@@ -30,14 +24,15 @@ public class BTree {
 			root = new Node(Order, null);
 
 		}
+		
 		public void createFullTree(String filepath)
 		{
 			try {
-	            Files.lines(Path.of(filepath)).forEach(value -> {
+	            Files.lines(Paths.get(filepath)).forEach(value -> {
 	            	insert(value);
 	            });
 	        } catch (IOException e) {
-	            throw new RuntimeException("Error reading file. Can't update bloom filter table", e);
+	            throw new RuntimeException("Error reading file. Can't update Btree", e);
 	        }
 
 		}
@@ -50,18 +45,18 @@ public class BTree {
 	// --------------------------------------------------------
 
 
-		public Node search(Node root, char key)
+		public Node search(Node root, String key)
 		{
 			int i = 0;//we always want to start searching the 0th index of node.
 
-			while(i < root.count && key > root.key[i])//keep incrementing
+			while(i < root.count && key.compareTo(root.key[i]) >0)//keep incrementing
 	                    							  //in node while key >
 					                    			  //current value.
 			{
 				i++;
 			}
 
-			if(i <= root.count && key == root.key[i])//obviously if key is in node
+			if(i <= root.count &&  key.compareTo(root.key[i])==0)//obviously if key is in node
 								                     //we went to return node.
 			{
 
@@ -126,11 +121,11 @@ public class BTree {
 			}
 			x.key[i] = y.key[order-1];//finally push value up into root.
 
-			y.key[order-1 ] = 0; //erase value where we pushed from
+			y.key[order-1 ] = ""; //erase value where we pushed from
 
 			for(int j = 0; j < order - 1; j++)
 			{
-				y.key[j + order] = 0; //'delete' old values
+				y.key[j + order] = ""; //'delete' old values
 			}
 
 
@@ -142,13 +137,13 @@ public class BTree {
 	// this will be insert method when node is not full.        |
 	// ----------------------------------------------------------
 
-		public void nonfullInsert(Node x, char key)
+		public void nonfullInsert(Node x, String key)
 		{
 			int i = x.count; //i is number of keys in node x
 
 			if(x.leaf)
 			{
-				while(i >= 1 && key < x.key[i-1])//here find spot to put key.
+				while(i >= 1 && key.compareTo(x.key[i-1]) < 0 )//here find spot to put key.
 				{
 					x.key[i] = x.key[i-1];//shift values to make room
 
@@ -164,7 +159,7 @@ public class BTree {
 			else
 			{
 				int j = 0;
-				while(j < x.count  && key > x.key[j])//find spot to recurse
+				while(j < x.count  && key.compareTo(x.key[j]) > 0)//find spot to recurse
 				{			             //on correct child  		
 					j++;
 				}
@@ -175,7 +170,7 @@ public class BTree {
 				{
 					split(x,j,x.child[j]);//call split on node x's ith child
 
-					if(key > x.key[j])
+					if(key.compareTo(x.key[j]) > 0)
 					{
 						j++;
 					}
@@ -189,7 +184,7 @@ public class BTree {
 	//insert non full if needed.                                    |
 	//--------------------------------------------------------------
 
-		public void insert(BTree t, char key)
+		public void insert(BTree t, String key)
 		{
 			Node r = t.root;//this method finds the node to be inserted as 
 					 //it goes through this starting at root node.
@@ -212,7 +207,7 @@ public class BTree {
 			else
 				nonfullInsert(r,key);//if its not full just insert it
 		}
-		public void insert( char key)
+		public void insert( String value)
 		{
 			Node r = root;//this method finds the node to be inserted as 
 					 //it goes through this starting at root node.
@@ -230,10 +225,10 @@ public class BTree {
 
 				split(s,0,r);//split root
 
-				nonfullInsert(s, key); //call insert method
+				nonfullInsert(s, value); //call insert method
 			}
 			else
-				nonfullInsert(r,key);//if its not full just insert it
+				nonfullInsert(r,value);//if its not full just insert it
 		}
 
 
@@ -299,7 +294,7 @@ public class BTree {
 	//to implement all cases properly.                             |
 	//--------------------------------------------------------------
 
-	       public void deleteKey(BTree t, char key)
+	       public void deleteKey(BTree t, String key)
 	       {
 				       
 			Node temp = new Node(order,null);//temp Node
