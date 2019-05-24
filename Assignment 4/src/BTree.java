@@ -1,5 +1,8 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class Btree {
+public class BTree {
 	// here are variables available to tree
 
 		int order; // order of tree
@@ -12,14 +15,32 @@ public class Btree {
 	// ---------------------------------------------------------
 
 
-		public Btree(int order)
+		public BTree(String order)
 		{
-			this.order = order;
+			int Order;
+			try {
+				 Order=Integer.parseInt(order);
+			}
+			catch(NumberFormatException e)
+			{
+				throw new RuntimeException("BTree size isn't an integer", e);
+			}
+			this.order = Order;
 
-			root = new Node(order, null);
+			root = new Node(Order, null);
 
 		}
+		public void createFullTree(String filepath)
+		{
+			try {
+	            Files.lines(Path.of(filepath)).forEach(value -> {
+	            	insert(value);
+	            });
+	        } catch (IOException e) {
+	            throw new RuntimeException("Error reading file. Can't update bloom filter table", e);
+	        }
 
+		}
 
 	// --------------------------------------------------------
 	// this will be method to search for a given node where   |
@@ -168,7 +189,7 @@ public class Btree {
 	//insert non full if needed.                                    |
 	//--------------------------------------------------------------
 
-		public void insert(Btree t, char key)
+		public void insert(BTree t, char key)
 		{
 			Node r = t.root;//this method finds the node to be inserted as 
 					 //it goes through this starting at root node.
@@ -191,6 +212,30 @@ public class Btree {
 			else
 				nonfullInsert(r,key);//if its not full just insert it
 		}
+		public void insert( char key)
+		{
+			Node r = root;//this method finds the node to be inserted as 
+					 //it goes through this starting at root node.
+			if(r.count == 2*order - 1)//if is full
+			{
+				Node s = new Node(order,null);//new node
+
+				root = s;      //\
+		    			       // \	
+				s.leaf = false;//  \
+		    			       //   > this is to initialize node.
+				s.count = 0;   //  /
+		    			       // /	
+				s.child[0] = r;///
+
+				split(s,0,r);//split root
+
+				nonfullInsert(s, key); //call insert method
+			}
+			else
+				nonfullInsert(r,key);//if its not full just insert it
+		}
+
 
 	// ---------------------------------------------------------------------------------
 	// this will be method to print out a node, or recurses when root node is not leaf |
@@ -222,7 +267,7 @@ public class Btree {
 	// this will be method to print out a node                    |
 	// ------------------------------------------------------------
 
-		public void SearchPrintNode( Btree T,char x)
+		public void SearchPrintNode( BTree T,char x)
 		{
 			Node temp= new Node(order,null);
 
@@ -254,7 +299,7 @@ public class Btree {
 	//to implement all cases properly.                             |
 	//--------------------------------------------------------------
 
-	       public void deleteKey(Btree t, char key)
+	       public void deleteKey(BTree t, char key)
 	       {
 				       
 			Node temp = new Node(order,null);//temp Node
