@@ -321,4 +321,37 @@ public class BTree {
 				System.out.println("This node is either not a leaf or has less than order - 1 keys.");
 			}
 	       }
+	public void InorderPrint(Node root,int deep) {
+		
+		if(root.leaf )
+		{
+			for(int i=0;i<root.key.length;i++)
+			{
+				if(root.key[i]!= "")
+				System.out.println(root.key[i]+"_"+deep);
+			}
+		}
+		else
+		{
+			for(int i=0;i<root.child.length;i++)
+			{
+				if(root.child[i]!=null)
+				{
+					InorderPrint(root.child[i],deep+1);
+					System.out.println(root.key[i]+"_"+deep);
+				}
+			}
+		}
+		
+	}
+	public int CountPernts(Node root,int n) {
+		if(root.parent==null)
+		{
+			return n;
+		}
+		else
+		{
+			CountPernts( root.parent,n+1);
+		}
+	}
 }
