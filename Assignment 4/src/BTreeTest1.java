@@ -13,7 +13,9 @@ public class BTreeTest1 {
 	public void testInorderPrint() {
 		BTree btree = new BTree("2");
 		btree.createFullTree("src/bad_passwords.txt");
-		btree.InorderPrint(btree.root,0);
+		String[] Data=new String[1];
+		Data[0]="";
+		btree.InorderPrint(btree.root,0,Data);
 	}
 
 }

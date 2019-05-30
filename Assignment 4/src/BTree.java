@@ -1,4 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -321,14 +324,14 @@ public class BTree {
 				System.out.println("This node is either not a leaf or has less than order - 1 keys.");
 			}
 	       }
-	public void InorderPrint(Node root,int deep) {
-		
+	public void InorderPrint(Node root,int deep,String[] Data) {
+
 		if(root.leaf )
 		{
 			for(int i=0;i<root.key.length && root.key[i]!= "";i++)
 			{
 				if(root.key[i]!=null)
-				System.out.println(root.key[i]+"_"+deep);
+					Data[0]=Data[0]+root.key[i]+"_"+deep+",";	
 			}
 		}
 		else
@@ -337,15 +340,31 @@ public class BTree {
 			{
 				if(root.child[i]!=null)
 				{
-					InorderPrint(root.child[i],deep+1);
-					if(root.key[i]!= ""&root.key[i]!=null)
-					System.out.println(root.key[i]+"_"+deep);
+					InorderPrint(root.child[i],deep+1,Data);
+					if(root.key[i]!= "" & root.key[i]!=null)
+						Data[0]=Data[0]+root.key[i]+"_"+deep+",";	
 					else
 						break;
 				}
 			}
+		}	
+		if(deep==0)
+		{
+			PrintToFile("src/output2.txt",Data);
 		}
-		
+	}
+	private void PrintToFile(String FileName,String[] Data )
+	{
+		try {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(FileName));
+		writer.newLine();
+		writer.newLine();
+		Data[0]=Data[0].substring(0, Data[0].length()-1);
+		writer.write(Data[0]);
+		writer.close();
+		} catch (IOException e) {
+            throw new RuntimeException("Error Writing file", e);
+        }
 	}
 	public int CountPernts(Node root,int n) {
 		if(root.parent==null)
