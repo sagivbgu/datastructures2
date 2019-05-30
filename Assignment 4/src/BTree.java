@@ -1,9 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class BTree {
@@ -261,30 +259,6 @@ public class BTree {
 			}
 		}
 
-	// ------------------------------------------------------------
-	// this will be method to print out a node                    |
-	// ------------------------------------------------------------
-
-		public void SearchPrintNode( BTree T,char x)
-		{
-			Node temp= new Node(order,null);
-
-			temp= search(T.root,x);
-
-			if (temp==null)
-			{
-
-			System.out.println("The Key does not exist in this tree");
-			}
-
-			else
-			{
-
-			print(temp);
-			}
-
-
-		}
 
 	//--------------------------------------------------------------
 	//this method will delete a key value from the leaf node it is |
@@ -297,7 +271,7 @@ public class BTree {
 	//to implement all cases properly.                             |
 	//--------------------------------------------------------------
 
-	       public void deleteKey(BTree t, String key)
+	public void deleteKey(BTree t, String key)
 	       {
 				       
 			Node temp = new Node(order,null);//temp Node
@@ -308,7 +282,7 @@ public class BTree {
 			{
 				int i = 0;
 
-				while( key > temp.getValue(i))
+				while(key.compareTo(temp.getValue(i)) > 0)
 				{
 					i++;
 				}
@@ -365,15 +339,5 @@ public class BTree {
 		} catch (IOException e) {
             throw new RuntimeException("Error Writing file", e);
         }
-	}
-	public int CountPernts(Node root,int n) {
-		if(root.parent==null)
-		{
-			return n;
-		}
-		else
-		{
-			CountPernts( root.parent,n+1);
-		}
-	}
+	}	
 }
