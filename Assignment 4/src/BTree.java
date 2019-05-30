@@ -325,9 +325,9 @@ public class BTree {
 		
 		if(root.leaf )
 		{
-			for(int i=0;i<root.key.length;i++)
+			for(int i=0;i<root.key.length && root.key[i]!= "";i++)
 			{
-				if(root.key[i]!= "")
+				if(root.key[i]!=null)
 				System.out.println(root.key[i]+"_"+deep);
 			}
 		}
@@ -338,7 +338,10 @@ public class BTree {
 				if(root.child[i]!=null)
 				{
 					InorderPrint(root.child[i],deep+1);
+					if(root.key[i]!= ""&root.key[i]!=null)
 					System.out.println(root.key[i]+"_"+deep);
+					else
+						break;
 				}
 			}
 		}
