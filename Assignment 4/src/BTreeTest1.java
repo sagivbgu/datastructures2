@@ -15,7 +15,7 @@ public class BTreeTest1 {
 		btree.createFullTree("src/bad_passwords.txt");
 		String[] Data=new String[1];
 		Data[0]="";
-		btree.InorderPrint(btree.root,0,Data);
+		btree.buildInorderRepresentation(btree.root,0,Data);
 	}
 
 }

@@ -1,3 +1,5 @@
+// TODO: Refactor
+
 public class LinkedList<T>  {
 
     // ---------------------- fields ----------------------
