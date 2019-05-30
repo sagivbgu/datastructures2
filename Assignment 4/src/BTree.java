@@ -28,7 +28,7 @@ public class BTree {
         }
     }
 
-    public BTreeNode search(BTreeNode root, String key) {
+    public boolean search(BTreeNode root, String key) {
         int i = 0;
 
         while (i < root.getNumOfKeys() && key.compareTo(root.getValue(i)) > 0) {
@@ -36,11 +36,11 @@ public class BTree {
         }
 
         if (i <= root.getNumOfKeys() && key.equals(root.getValue(i))) {
-            return root;
+            return true;
         }
 
         if (root.isLeaf) {
-            return null;
+            return false;
         }
         return search(root.getChild(i), key);
     }
