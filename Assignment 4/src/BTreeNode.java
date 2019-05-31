@@ -36,4 +36,12 @@ public class BTreeNode {
     public void setNumOfKeys(int keys) {
         currentKeysCount = keys;
     }
+
+    public BTreeNode getParent() {
+        return parent;
+    }
+
+    public void setParent(BTreeNode parent) {
+        this.parent = parent;
+    }
 }
