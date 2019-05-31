@@ -68,7 +68,7 @@ public class BTree {
 
     public void split(BTreeNode parentNode, int i) {
         BTreeNode nodeToSplit = parentNode.getChild(i);
-        BTreeNode rightNode = new BTreeNode(t, null);
+        BTreeNode rightNode = new BTreeNode(t, parentNode);
         rightNode.isLeaf = nodeToSplit.isLeaf;
         rightNode.setNumOfKeys(t - 1);
 
@@ -82,8 +82,6 @@ public class BTree {
             }
         }
 
-        nodeToSplit.setNumOfKeys(t - 1);
-
         // Shift children from the parent node
         for (int j = parentNode.getNumOfKeys(); j > i; j--) {
             parentNode.setChild(j + 1, parentNode.getChild(j));
@@ -91,10 +89,12 @@ public class BTree {
         parentNode.setChild(i + 1, rightNode);
 
         // Shift keys from the parent node
-        for (int j = parentNode.getNumOfKeys(); j > i; j--) {
+        for (int j = parentNode.getNumOfKeys() - 1; j > i - 1; j--) {
             parentNode.setValue(j + 1, parentNode.getValue(j));
         }
         parentNode.setValue(i, nodeToSplit.getValue(t - 1));
+        parentNode.setNumOfKeys(parentNode.getNumOfKeys() + 1);
+        nodeToSplit.setNumOfKeys(t - 1);
 
         // Delete old values
         nodeToSplit.setValue(t - 1, "");
@@ -102,7 +102,6 @@ public class BTree {
             nodeToSplit.setValue(j + t, "");
         }
 
-        parentNode.setNumOfKeys(parentNode.getNumOfKeys() + 1);
     }
 
     public void insert(String value) {
@@ -119,32 +118,30 @@ public class BTree {
     }
 
     public void insertNonFull(BTreeNode node, String key) {
-        int i = node.getNumOfKeys();
+        int i = node.getNumOfKeys() - 1;
 
         if (node.isLeaf) {
-            while (i > 0 && key.compareTo(node.getValue(i - 1)) < 0) {
-                node.setValue(i, node.getValue(i - 1));
+            while (i >= 0 && key.compareTo(node.getValue(i)) < 0) {
+                node.setValue(i + 1, node.getValue(i));
                 i--;
             }
 
-            node.setValue(i, key);
+            node.setValue(i + 1, key);
             node.setNumOfKeys(node.getNumOfKeys() + 1);
 
         } else {
-            int j = 0;
-            while (j < node.getNumOfKeys() && key.compareTo(node.getValue(j)) > 0) {
-                j++;
+            while (i >= 0  && key.compareTo(node.getValue(i)) < 0) {
+                i--;
             }
 
-            if (node.getChild(j).getNumOfKeys() == t * 2 - 1) {
-                split(node, j);
+            if (node.getChild(i).getNumOfKeys() == 2 * t - 1) {
+                split(node, i);
 
-                if (key.compareTo(node.getValue(j)) > 0) {
-                    j++;
+                if (key.compareTo(node.getValue(i)) > 0) {
+                    i++;
                 }
             }
-
-            insertNonFull(node.getChild(j), key);
+            insertNonFull(node.getChild(i), key);
         }
     }
 

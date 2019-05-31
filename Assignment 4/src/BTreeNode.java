@@ -8,6 +8,10 @@ public class BTreeNode {
     public BTreeNode(int t, BTreeNode parent) {
         this.parent = parent;
         keys = new String[2 * t - 1];
+        for (int i = 0; i < keys.length; i++) {
+            keys[i] = "";
+        }
+
         children = new BTreeNode[2 * t];
         isLeaf = true;
         currentKeysCount = 0;
@@ -44,13 +48,14 @@ public class BTreeNode {
     public void setParent(BTreeNode parent) {
         this.parent = parent;
     }
-    
+
     public int indexOf(String value) {
         for (int i = 0; i < getNumOfKeys(); i++) {
             if (keys[i].equals(value)) return i;
         }
         return -1;
     }
+
     public String removeKey(String value) {
         String removed = null;
         boolean found = false;
@@ -65,10 +70,10 @@ public class BTreeNode {
             }
         }
         if (found) {
-        	currentKeysCount--;
+            currentKeysCount--;
             keys[currentKeysCount] = null;
         }
         return removed;
     }
-    
+
 }
