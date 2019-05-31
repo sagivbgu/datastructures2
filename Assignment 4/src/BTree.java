@@ -97,9 +97,8 @@ public class BTree {
         nodeToSplit.setNumOfKeys(t - 1);
 
         // Delete old values
-        nodeToSplit.setValue(t - 1, "");
-        for (int j = 0; j < t - 1; j++) {
-            nodeToSplit.setValue(j + t, "");
+        for (int j = t - 1; j < 2 * t - 1; j++) {
+            nodeToSplit.setValue(j, "");
         }
 
     }
@@ -130,7 +129,7 @@ public class BTree {
             node.setNumOfKeys(node.getNumOfKeys() + 1);
 
         } else {
-            while (i >= 0  && key.compareTo(node.getValue(i)) < 0) {
+            while (i >= 0 && key.compareTo(node.getValue(i)) < 0) {
                 i--;
             }
 

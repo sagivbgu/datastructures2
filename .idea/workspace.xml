@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdc12998-52cb-4dc2-8e13-d2e26a6104ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/datastructures2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/datastructures2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment 4/src/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/BTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/src/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/example_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/tests/BTreeTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/tests/BTreeTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/tests/BloomFilterTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,20 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="39" column="56" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="56" />
+            <state relative-caret-position="472">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1936">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
               <folding>
                 <element signature="e#601#602#0" expanded="true" />
                 <element signature="e#689#690#0" expanded="true" />
@@ -95,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="187">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -392,14 +373,35 @@
       <option name="project" value="LOCAL" />
       <updated>1559287286303</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Corrected B-Tree split and insert">
+      <created>1559292686876</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1559292686876</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changes to tests">
+      <created>1559292708426</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1559292708426</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Discarded changes">
+      <created>1559292865203</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1559292865203</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.34850863" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17397882" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -408,7 +410,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32569557" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32733223" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -470,7 +472,10 @@
     <MESSAGE value="Added self_testing from the assignment page and separated tests from code" />
     <MESSAGE value="Added BTreeNode parent getter and setter" />
     <MESSAGE value="Rearranged BTree methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rearranged BTree methods" />
+    <MESSAGE value="Corrected B-Tree split and insert" />
+    <MESSAGE value="Changes to tests" />
+    <MESSAGE value="Discarded changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discarded changes" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -688,9 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/example_output.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/README.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -704,7 +706,7 @@
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1936">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -721,20 +723,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="39" column="56" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="1204" selection-start-line="1204" selection-end-line="1204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <folding>
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1084#1085#0" expanded="true" />
+            <element signature="e#1167#1168#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -750,27 +759,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/example_output.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        <state relative-caret-position="649">
+          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
           <folding>
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#938#939#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        <state relative-caret-position="472">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -779,8 +784,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="187">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
