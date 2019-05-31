@@ -1,13 +1,11 @@
 public class BTreeNode {
-    private int t;
     private int currentKeysCount; // Number of keys in the node
-    String[] keys;
-    BTreeNode[] children;
+    private String[] keys;
+    private BTreeNode[] children;
+    private BTreeNode parent;
     boolean isLeaf;
-    BTreeNode parent;
 
     public BTreeNode(int t, BTreeNode parent) {
-        this.t = t;
         this.parent = parent;
         keys = new String[2 * t - 1];
         children = new BTreeNode[2 * t];

@@ -3,11 +3,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import javax.sound.sampled.Line;
+import java.util.StringJoiner;
 
 public class BTree {
-    int t;
+    private int t;
     BTreeNode root;
 
     public BTree(String t) {
@@ -132,14 +131,14 @@ public class BTree {
 
     // TODO: Delete
     public void print(BTreeNode n) {
-        for (int i = 0; i < n.currentKeysCount; i++) {
+        for (int i = 0; i < n.getNumOfKeys(); i++) {
             System.out.print(n.getValue(i) + " ");//this part prints root node
         }
 
         if (!n.isLeaf)//this is called when root is not leaf;
         {
 
-            for (int j = 0; j <= n.currentKeysCount; j++)//in this loop we recurse
+            for (int j = 0; j <= n.getNumOfKeys(); j++)//in this loop we recurse
             {                  //to print out tree in
                 if (n.getChild(j) != null) //preorder fashion.
                 {              //going from left most
@@ -150,79 +149,44 @@ public class BTree {
         }
     }
 
-
-    // TODO
-    //--------------------------------------------------------------
-    //this method will delete a key value from the leaf node it is |
-    //in.  We will use the search method to traverse through the   |
-    //tree to find the node where the key is in.  We will then     |
-    //iterated through key[] array until we get to node and will   |
-    //assign k[i] = k[i+1] overwriting key we want to delete and   |
-    //keeping blank spots out as well.  Note that this is the most |
-    //simple case of delete that there is and we will not have time|
-    //to implement all cases properly.                             |
-    //--------------------------------------------------------------
-/*
-    public void deleteKey(BTree t, String key) {
-
-        BTreeNode temp = new BTreeNode(this.t, null);//temp Node
-
-        temp = search(t.root, key);//call of search method on tree for key
-
-        if (temp.isLeaf && temp.currentKeysCount > this.t - 1) {
-            int i = 0;
-
-            while (key.compareTo(temp.getValue(i)) > 0) {
-                i++;
-            }
-            for (int j = i; j < 2 * this.t - 2; j++) {
-                temp.keys[j] = temp.getValue(j + 1);
-            }
-            temp.currentKeysCount--;
-
-        } else {
-            System.out.println("This node is either not a leaf or has less than order - 1 keys.");
-        }
-    }
-*/
-
     @Override
     public String toString() {
-        StringBuilder treeStringBuilder = new StringBuilder();
-        buildInorderRepresentation(root, 0, treeStringBuilder);
-        return treeStringBuilder.toString();
+        StringJoiner treeStringJoiner = new StringJoiner(",");
+        buildInorderRepresentation(root, 0, treeStringJoiner);
+        return treeStringJoiner.toString();
     }
 
-    private void buildInorderRepresentation(BTreeNode root, int depth, StringBuilder treeStringBuilder) {
+    private void buildInorderRepresentation(BTreeNode root, int depth, StringJoiner treeStringJoiner) {
         if (root.isLeaf) {
             for (int i = 0; i < root.getNumOfKeys() && !root.getValue(i).equals(""); i++) {
                 if (root.getValue(i) != null)
-                    treeStringBuilder.append(root.getValue(i)).append("_").append(depth).append(",");
+                    treeStringJoiner.add(root.getValue(i) + "_" + depth);
             }
         } else {
             for (int i = 0; i < root.getNumOfKeys() + 1; i++) {
                 if (root.getChild(i) != null) {
-                    buildInorderRepresentation(root.getChild(i), depth + 1, treeStringBuilder);
+                    buildInorderRepresentation(root.getChild(i), depth + 1, treeStringJoiner);
                     if (!root.getValue(i).equals("") & root.getValue(i) != null)
-                        treeStringBuilder.append(root.keys[i]).append("_").append(depth).append(",");
+                        treeStringJoiner.add(root.getValue(i) + "_" + depth);
                     else
                         break;
                 }
             }
         }
     }
-    public String getSearchTime(String requestedPasswordsFilePath)
-    {
+
+    public String getSearchTime(String requestedPasswordsFilePath) {
         return Utils.getElapsedTimeInMs(() -> {
             try {
                 Files.lines(Paths.get(requestedPasswordsFilePath))
-                        .forEach(password -> search(root,password));
+                        .forEach(password -> search(root, password));
             } catch (IOException e) {
-                throw new RuntimeException("Error reading file. Can't get hash table search time", e);
+                throw new RuntimeException("Error reading file. Can't get B-Tree search time", e);
             }
         });
 
     }
+
     // TODO: Delete
     private void PrintToFile(String FileName, String[] Data) {
         try {
