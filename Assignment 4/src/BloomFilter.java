@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.*;
 
 
@@ -23,7 +22,7 @@ public class BloomFilter {
 
     public void updateTable(String valuesFilePath) {
         try {
-            Files.lines(Path.of(valuesFilePath)).forEach(value -> {
+            Files.lines(Paths.get(valuesFilePath)).forEach(value -> {
                 long hornerValue = Utils.getHornerValue(value);
                 InsertToFilter(hornerValue);
             });
@@ -63,7 +62,7 @@ public class BloomFilter {
 
     public String getRejectedPasswordsAmount(String requestedPasswordsFilePath) {
         try {
-            long rejectedPasswords = Files.lines(Path.of(requestedPasswordsFilePath))
+            long rejectedPasswords = Files.lines(Paths.get(requestedPasswordsFilePath))
                     .filter(pass -> isKeyInBloomFilter(Utils.getHornerValue(pass)))
                     .count();
             return String.valueOf(rejectedPasswords);
@@ -80,7 +79,7 @@ public class BloomFilter {
 
     private int countLinesInFile(String filePath) {
         try {
-            return (int) Files.lines(Path.of(filePath)).count();
+            return (int) Files.lines(Paths.get(filePath)).count();
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't count lines in file", e);
         }

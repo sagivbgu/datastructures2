@@ -49,7 +49,7 @@ public class BTree {
         });
     }
 
-    public boolean search(BTreeNode root, String key) {
+    public BTreeNode search(BTreeNode root, String key) {
         int i = 0;
 
         while (i < root.getNumOfKeys() && key.compareTo(root.getValue(i)) > 0) {
@@ -57,11 +57,11 @@ public class BTree {
         }
 
         if (i <= root.getNumOfKeys() && key.equals(root.getValue(i))) {
-            return true;
+            return root;
         }
 
         if (root.isLeaf) {
-            return false;
+            return null;
         }
         return search(root.getChild(i), key);
     }
@@ -163,4 +163,99 @@ public class BTree {
             }
         }
     }
+   
+    public String remove(String value) {
+        String removed = null;
+        BTreeNode node = this.search(root,value);
+        removed = remove(value,node);
+        return removed;
+    }
+
+    /**
+     * Remove the value from the Node and check invariants
+     * 
+     * @param value
+     *            T to remove from the tree
+     * @param node
+     *            Node to remove value from
+     * @return True if value was removed from the tree.
+     */
+    private String remove(String value, BTreeNode node) {
+        if (node == null) return null;
+
+        String removed = null;
+        int index = node.indexOf(value);
+        removed = node.removeKey(value);
+        if (node.numberOfChildren() == 0) {
+            // leaf node
+            if (node.parent != null && node.numberOfKeys() < minKeySize) {
+                this.combined(node);
+            } else if (node.parent == null && node.numberOfKeys() == 0) {
+                // Removing root node with no keys or children
+                root = null;
+            }
+        } else {
+            // internal node
+            Node<T> lesser = node.getChild(index);
+            Node<T> greatest = this.getGreatestNode(lesser);
+            T replaceValue = this.removeGreatestValue(greatest);
+            node.addKey(replaceValue);
+            if (greatest.parent != null && greatest.numberOfKeys() < minKeySize) {
+                this.combined(greatest);
+            }
+            if (greatest.numberOfChildren() > maxChildrenSize) {
+                this.split(greatest);
+            }
+        }
+
+        size--;
+
+        return removed;
+    }
+
+    /**
+     * Remove greatest valued key from node.
+     * 
+     * @param node
+     *            to remove greatest value from.
+     * @return value removed;
+     */
+    private T removeGreatestValue(Node<T> node) {
+        T value = null;
+        if (node.numberOfKeys() > 0) {
+            value = node.removeKey(node.numberOfKeys() - 1);
+        }
+        return value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        root = null;
+        size = 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean contains(T value) {
+        Node<T> node = getNode(value);
+        return (node != null);
+    }
+
+    /**
+     * Get the node with value.
+     * 
+     * @param value
+     *            to find in the tree.
+     * @return Node<T> with value.
+     */
+
+
+
+
+
 }

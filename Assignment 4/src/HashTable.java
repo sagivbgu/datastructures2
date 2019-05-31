@@ -20,7 +20,7 @@ class HashTable {
 
     public void updateTable(String valuesFilePath) {
         try {
-            Files.lines(Path.of(valuesFilePath))
+            Files.lines(Paths.get(valuesFilePath))
                     .forEach(value -> insert(Utils.getHornerValue(value)));
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't update hash table", e);
