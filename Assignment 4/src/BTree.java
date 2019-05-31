@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import javax.sound.sampled.Line;
+
 public class BTree {
     int t;
     BTreeNode root;
@@ -209,7 +211,18 @@ public class BTree {
             }
         }
     }
+    public String getSearchTime(String requestedPasswordsFilePath)
+    {
+        return Utils.getElapsedTimeInMs(() -> {
+            try {
+                Files.lines(Paths.get(requestedPasswordsFilePath))
+                        .forEach(password -> search(root,password));
+            } catch (IOException e) {
+                throw new RuntimeException("Error reading file. Can't get hash table search time", e);
+            }
+        });
 
+    }
     // TODO: Delete
     private void PrintToFile(String FileName, String[] Data) {
         try {
