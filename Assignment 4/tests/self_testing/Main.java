@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
@@ -17,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             String workingDir = System.getProperty("user.dir");
-            File outputTxt = new File("output.txt");
+            File outputTxt = new File("example_output.txt");
             outputTxt.delete();
             File dir = new File(workingDir);
             File[] files = dir.listFiles(new FilenameFilter(){
@@ -40,7 +38,7 @@ public class Main {
             Process cmndPr = Runtime.getRuntime().exec("javac Runner.java");
             cmndPr.waitFor();
             Main.executeCommandLine("java Runner 32 32 2", 5000L);
-            BufferedReader theirsRdr = new BufferedReader(new FileReader("output.txt"));
+            BufferedReader theirsRdr = new BufferedReader(new FileReader("example_output.txt"));
             String line = theirsRdr.readLine();
             boolean hasPassed = true;
             int lineInd = 0;
