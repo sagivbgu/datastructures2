@@ -1,5 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,12 +19,34 @@ public class BTree {
         root = new BTreeNode(tVal, null);
     }
 
+    @Override
+    public String toString() {
+        StringJoiner treeStringJoiner = new StringJoiner(",");
+        buildInorderRepresentation(root, 0, treeStringJoiner);
+        return treeStringJoiner.toString();
+    }
+
     public void createFullTree(String filepath) {
         try {
             Files.lines(Paths.get(filepath)).forEach(this::insert);
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't update Btree", e);
         }
+    }
+
+    public void deleteKeysFromTree(String keysToDeleteFilePath) {
+        // TODO
+    }
+
+    public String getSearchTime(String requestedPasswordsFilePath) {
+        return Utils.getElapsedTimeInMs(() -> {
+            try {
+                Files.lines(Paths.get(requestedPasswordsFilePath))
+                        .forEach(password -> search(root, password));
+            } catch (IOException e) {
+                throw new RuntimeException("Error reading file. Can't get B-Tree search time", e);
+            }
+        });
     }
 
     public boolean search(BTreeNode root, String key) {
@@ -128,34 +148,6 @@ public class BTree {
         }
     }
 
-
-    // TODO: Delete
-    public void print(BTreeNode n) {
-        for (int i = 0; i < n.getNumOfKeys(); i++) {
-            System.out.print(n.getValue(i) + " ");//this part prints root node
-        }
-
-        if (!n.isLeaf)//this is called when root is not leaf;
-        {
-
-            for (int j = 0; j <= n.getNumOfKeys(); j++)//in this loop we recurse
-            {                  //to print out tree in
-                if (n.getChild(j) != null) //preorder fashion.
-                {              //going from left most
-                    System.out.println();      //child to right most
-                    print(n.getChild(j));     //child.
-                }
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringJoiner treeStringJoiner = new StringJoiner(",");
-        buildInorderRepresentation(root, 0, treeStringJoiner);
-        return treeStringJoiner.toString();
-    }
-
     private void buildInorderRepresentation(BTreeNode root, int depth, StringJoiner treeStringJoiner) {
         if (root.isLeaf) {
             for (int i = 0; i < root.getNumOfKeys() && !root.getValue(i).equals(""); i++) {
@@ -172,32 +164,6 @@ public class BTree {
                         break;
                 }
             }
-        }
-    }
-
-    public String getSearchTime(String requestedPasswordsFilePath) {
-        return Utils.getElapsedTimeInMs(() -> {
-            try {
-                Files.lines(Paths.get(requestedPasswordsFilePath))
-                        .forEach(password -> search(root, password));
-            } catch (IOException e) {
-                throw new RuntimeException("Error reading file. Can't get B-Tree search time", e);
-            }
-        });
-
-    }
-
-    // TODO: Delete
-    private void PrintToFile(String FileName, String[] Data) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName));
-            writer.newLine();
-            writer.newLine();
-            Data[0] = Data[0].substring(0, Data[0].length() - 1);
-            writer.write(Data[0]);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException("Error Writing file", e);
         }
     }
 }
