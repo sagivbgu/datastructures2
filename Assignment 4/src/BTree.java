@@ -50,22 +50,19 @@ public class BTree {
     }
 
     public boolean search(BTreeNode root, String key) {
-    	
         int i = 0;
-        while (i < root.getNumOfKeys() && key.compareTo(root.getValue(i)) > 0) {
+        while (i < root.getNumOfKeys() - 1 && key.compareTo(root.getValue(i)) > 0) {
             i++;
         }
 
-        if (i <= root.getNumOfKeys() && key.equals(root.getValue(i))) {
+        if (i <= root.getNumOfKeys() - 1 && key.equals(root.getValue(i))) {
             return true;
         }
 
-        if (root.isLeaf || i>= root.getNumOfKeys() ) {
+        if (root.isLeaf || root.getChild(i) == null) {
             return false;
         }
         return search(root.getChild(i), key);
-        
-
     }
 
     public void Oldsplit(BTreeNode parentNode, int i) {
