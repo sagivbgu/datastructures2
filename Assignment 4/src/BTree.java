@@ -65,8 +65,7 @@ public class BTree {
         return search(root.getChild(i), key);
     }
 
-    public void Oldsplit(BTreeNode parentNode, int i) {
-
+    public void split(BTreeNode parentNode, int i) {
         BTreeNode nodeToSplit = parentNode.getChild(i);
         BTreeNode rightNode = new BTreeNode(t, parentNode);
         rightNode.isLeaf = nodeToSplit.isLeaf;
@@ -78,7 +77,7 @@ public class BTree {
         }
         if (!nodeToSplit.isLeaf) {
             for (int j = 0; j < t; j++) {
-                rightNode.setChild(i, nodeToSplit.getChild(j + t));
+                rightNode.setChild(j, nodeToSplit.getChild(j + t));
             }
         }
 
@@ -96,92 +95,56 @@ public class BTree {
         parentNode.setNumOfKeys(parentNode.getNumOfKeys() + 1);
         nodeToSplit.setNumOfKeys(t - 1);
 
-        // Delete old values
+        // Delete old values and children
         for (int j = t - 1; j < 2 * t - 1; j++) {
             nodeToSplit.setValue(j, "");
+            nodeToSplit.setChild(j + 1, null);
         }
-
     }
- 
-    public void split(BTreeNode ParentNode , int i,BTreeNode ChildeNode)
-	{
-    	BTreeNode Node = new BTreeNode(t,null);
-		Node.isLeaf = ChildeNode.isLeaf;
-		Node.setNumOfKeys(t - 1);
-		for(int j = 0; j < t - 1; j++)
-		{ 
-			Node.setValue(j, ChildeNode.getValue(j+1));
-		}
-		if(!ChildeNode.isLeaf)
-		{
-			for(int k = 0; k < t; k++)
-			{
-				Node.setChild(k, ChildeNode.getChild(k+t));
-			}
-		}
-		ChildeNode.setNumOfKeys(t - 1);
-		
-		for(int j = ParentNode.getNumOfKeys() ; j> i ; j--)
-		{		
-			ParentNode.setChild(j+1, ParentNode.getChild(j));
-		}
-		ParentNode.setChild(i+1, Node);
-		for(int j = ParentNode.getNumOfKeys(); j> i; j--)
-		{
-			ParentNode.setValue(j+1, ParentNode.getValue(j));
-		}
-		ParentNode.setValue(i, ChildeNode.getValue(t-1));
-		ChildeNode.setValue(t-1, "");
-		for(int j = 0; j < t - 1; j++)
-		{
-			ChildeNode.setValue(j+t, "");
-		}
-		ParentNode.setNumOfKeys(ParentNode.getNumOfKeys()+1);
-	}
-    
+
     public void insert(String value) {
         BTreeNode oldRoot = this.root;
         if (oldRoot.getNumOfKeys() == 2 * t - 1) {
             BTreeNode newRoot = new BTreeNode(t, null);
             this.root = newRoot;
             newRoot.isLeaf = false;
-            newRoot.setNumOfKeys(0);
             newRoot.setChild(0, oldRoot);
-            split(newRoot, 0 , oldRoot);
+            split(newRoot, 0);
             insertNonFull(newRoot, value);
         } else
             insertNonFull(oldRoot, value);
     }
 
     public void insertNonFull(BTreeNode node, String key) {
-        int i = node.getNumOfKeys();
+        int i = node.getNumOfKeys() - 1;
+
         if (node.isLeaf) {
-            while (i >= 1 && key.compareTo(node.getValue(i-1)) < 0) {
-                node.setValue(i , node.getValue(i-1));
+            while (i >= 0 && key.compareTo(node.getValue(i)) < 0) {
+                node.setValue(i + 1, node.getValue(i));
                 i--;
             }
 
-            node.setValue(i , key);
+            node.setValue(i + 1, key);
             node.setNumOfKeys(node.getNumOfKeys() + 1);
 
         } else {
-        	int j=0;
-            while (j < node.getNumOfKeys() && key.compareTo(node.getValue(j)) > 0) {
-                j++;
+            while (i >= 0 && key.compareTo(node.getValue(i)) < 0) {
+                i--;
             }
+            i++;
 
-            if (node.getChild(j).getNumOfKeys() == 2 * t - 1) {
-                split(node,j,node.getChild(j));
+            if (node.getChild(i).getNumOfKeys() == 2 * t - 1) {
+                split(node, i);
 
-                if (key.compareTo(node.getValue(j)) > 0) {
-                    j++;
+                if (key.compareTo(node.getValue(i)) > 0) {
+                    i++;
                 }
             }
-            insertNonFull(node.getChild(j), key);
+            insertNonFull(node.getChild(i), key);
         }
     }
 
-   
+
     private void buildInorderRepresentation(BTreeNode root, int depth, StringJoiner treeStringJoiner) {
         if (root.isLeaf) {
             for (int i = 0; i < root.getNumOfKeys() && !root.getValue(i).equals(""); i++) {
