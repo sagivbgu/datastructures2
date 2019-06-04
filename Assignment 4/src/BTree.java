@@ -290,28 +290,19 @@ public class BTree {
         return mergedChild;
     }
 
-    private String sucesor(BTreeNode root, String value) {
-        int i = 0;
-        while (i < root.getNumOfKeys() - 1 && value.compareTo(root.getValue(i)) > 0) {
-            i++;
+    private String getSuccessor(BTreeNode root, int keyIndex) {
+        BTreeNode child = root.getChild(keyIndex + 1);
+        while (!child.isLeaf) {
+            child = child.getChild(0);
         }
-        if (value.compareTo(root.getValue(i)) > 0 && i == root.getNumOfKeys() - 1) {
-            return sucesor(root.getChild(i + 1), value);
-        } else {
-            BTreeNode maxVAlue = root.getChild(i);
-            while (maxVAlue.getValue(0).compareTo(value) > 0 && maxVAlue.getChild(0) != null)
-                maxVAlue = maxVAlue.getChild(0);
-            for (int k = 0; k < maxVAlue.getNumOfKeys(); k++)
-                if (maxVAlue.getValue(k).compareTo(value) < 0) {
-                    String s = maxVAlue.getValue(k);
-                    deleteKeyFromNode(maxVAlue, k);
-                    return s;
-                }
-        }
-        return null;
+        return child.getValue(0);
     }
 
-    private BTreeNode predesor(BTreeNode root, String value) {
-        return null;
+    private String getPredecessor(BTreeNode root, int keyIndex) {
+        BTreeNode child = root.getChild(keyIndex);
+        while (!child.isLeaf) {
+            child = child.getChild(child.getNumOfKeys());
+        }
+        return child.getValue(child.getNumOfKeys() - 1);
     }
 }
