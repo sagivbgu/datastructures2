@@ -102,7 +102,8 @@ public class BTree {
         }
     }
 
-    public void insert(String value) {
+    public void insert(String HighCaseString) {
+    	String value=HighCaseString.toLowerCase();
         BTreeNode oldRoot = this.root;
         if (oldRoot.getNumOfKeys() == 2 * t - 1) {
             BTreeNode newRoot = new BTreeNode(t, null);
