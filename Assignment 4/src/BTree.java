@@ -168,7 +168,7 @@ public class BTree {
             for (int i = 0; i < root.getNumOfKeys() + 1; i++) {
                 if (root.getChild(i) != null) {
                     buildInorderRepresentation(root.getChild(i), depth + 1, treeStringJoiner);
-                    if (!root.getValue(i).equals("") & root.getValue(i) != null)
+                    if (i != root.getNumOfKeys() && !root.getValue(i).equals("") && root.getValue(i) != null)
                         treeStringJoiner.add(root.getValue(i) + "_" + depth);
                     else
                         break;
@@ -195,6 +195,7 @@ public class BTree {
         } else {
             if (root.isLeaf) {
                 deleteKeyFromNode(root, i);
+                return;
             }
 
             BTreeNode rightChild = root.getChild(i + 1);
@@ -297,16 +298,16 @@ public class BTree {
         node.setChild(node.getNumOfKeys(), null);
     }
 
-    private BTreeNode merge(BTreeNode root, int i) {
-        int leftChildIndex = i;
-        if (i > 0) {
-            i++;
+    private BTreeNode merge(BTreeNode root, int childIndex) {
+        int leftChildIndex = childIndex;
+        if (childIndex > 0) {
+            leftChildIndex--;
         }
         BTreeNode leftChild = root.getChild(leftChildIndex);
-        BTreeNode rightChild = root.getChild(leftChildIndex+1);
+        BTreeNode rightChild = root.getChild(leftChildIndex + 1);
 
         // Insert the value from the parent to the end of leftChild
-        leftChild.setValue(leftChild.getNumOfKeys(), root.getValue(i));
+        leftChild.setValue(leftChild.getNumOfKeys(), root.getValue(leftChildIndex));
         leftChild.setNumOfKeys(leftChild.getNumOfKeys() + 1);
 
         // Append keys from rightChild to leftChild
@@ -320,7 +321,13 @@ public class BTree {
         }
 
         leftChild.setNumOfKeys(leftChild.getNumOfKeys() + rightChild.getNumOfKeys());
-        deleteKeyFromNode(root, i);
+        root.setChild(leftChildIndex + 1, leftChild);
+        deleteKeyFromNode(root, leftChildIndex);
+
+        if (this.root.getNumOfKeys() == 0) {
+            this.root = leftChild;
+        }
+
         return leftChild;
     }
 
