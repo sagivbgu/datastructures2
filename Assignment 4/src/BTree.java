@@ -257,73 +257,61 @@ public class BTree {
         node.setChild(node.getNumOfKeys(), null);
     }
 
-    // TODO: Refactor
-    private void Merge(BTreeNode root,int i) {
-    	BTreeNode MergingChiled=root.getChild(i);
-    	if(i>0 && root.getChild(i-1).getNumOfKeys()<t)
-    	{
-    		BTreeNode LeftChiled=root.getChild(i-1);
-    		int numofkeys=root.getChild(i-1).getNumOfKeys();
-    		LeftChiled.setValue(numofkeys, root.getValue(i-1));
-    		LeftChiled.setNumOfKeys(LeftChiled.getNumOfKeys()+1);
-    		root.setValue(i-1, "");
-    		numofkeys++;
-    		root.setNumOfKeys(root.getNumOfKeys()-1);
-    		for(int j=0;j<numofkeys+MergingChiled.getNumOfKeys();j++)
-    		{
-    			LeftChiled.setValue(numofkeys+j, MergingChiled.getValue(j));
-    			LeftChiled.setNumOfKeys(LeftChiled.getNumOfKeys()+1);
-    		}
-    		for(int j=0;j<2*t;j++)
-    		{
-    			LeftChiled.setChild(LeftChiled.getNumOfKeys(), MergingChiled.getChild(j));
-    		}
-    		root.setChild(i, null);
-    	}
-    	
-    	else if(i+1<2*t){
-    		BTreeNode RightChiled=root.getChild(i+1);
-    		int numofkeys=RightChiled.getNumOfKeys();
-    		RightChiled.setValue(numofkeys, root.getValue(i));
-    		RightChiled.setNumOfKeys(RightChiled.getNumOfKeys()+1);
-    		root.setValue(i, "");
-    		numofkeys++;
-    		root.setNumOfKeys(root.getNumOfKeys()-1);
-    		for(int j=0;j<numofkeys+MergingChiled.getNumOfKeys();j++)
-    		{
-    			RightChiled.setValue(numofkeys+j, MergingChiled.getValue(j));
-    			RightChiled.setNumOfKeys(RightChiled.getNumOfKeys()+1);
-    		}
-    		for(int j=0;j<2*t;j++)
-    		{
-    			RightChiled.setChild(RightChiled.getNumOfKeys(), MergingChiled.getChild(j));
-    		}
-    		root.setChild(i, null);
-    	}
+    private BTreeNode merge(BTreeNode root, int i) {
+        BTreeNode mergingChild = root.getChild(i);
+        BTreeNode mergedChild = getMergedChild(root, i);
+
+        // Insert the value from the parent to the end of left child
+        mergedChild.setValue(mergedChild.getNumOfKeys(), root.getValue(i - 1));
+        mergedChild.setNumOfKeys(mergedChild.getNumOfKeys() + 1);
+
+        // Append keys from mergingChild to leftChild
+        for (int j = 0; j < mergingChild.getNumOfKeys(); j++) {
+            mergedChild.setValue(mergedChild.getNumOfKeys() + j, mergingChild.getValue(j));
+            mergedChild.setNumOfKeys(mergedChild.getNumOfKeys() + 1);
+        }
+
+        // Append children from mergingChild to leftChild
+        for (int j = 0; j < mergingChild.getNumOfKeys() + 1; j++) {
+            mergedChild.setChild(mergedChild.getNumOfKeys() + j, mergingChild.getChild(j));
+        }
+
+        deleteKeyFromNode(root, i - 1);
+        return mergedChild;
     }
-    private String sucesor(BTreeNode root,String  value) {
+
+    private BTreeNode getMergedChild(BTreeNode root, int i) {
+        BTreeNode mergedChild;
+        if (i > 0) {
+            mergedChild = root.getChild(i - 1);
+        } else {
+            mergedChild = root.getChild(i + 1);
+        }
+        return mergedChild;
+    }
+
+    private String sucesor(BTreeNode root, String value) {
         int i = 0;
         while (i < root.getNumOfKeys() - 1 && value.compareTo(root.getValue(i)) > 0) {
             i++;
         }
-        if (value.compareTo(root.getValue(i)) > 0 && i==root.getNumOfKeys()-1) {
-        	return sucesor( root.getChild(i+1),value);
-        }
-        else{
-        	BTreeNode maxVAlue=root.getChild(i);
-        	while(maxVAlue.getValue(0).compareTo(value)>0 && maxVAlue.getChild(0)!=null)
-        		maxVAlue=maxVAlue.getChild(0);
-        	for(int k=0;k<maxVAlue.getNumOfKeys();k++)
-        		if(maxVAlue.getValue(k).compareTo(value) <0)
-        		{
-        			String s=maxVAlue.getValue(k);
-        			deleteKeyFromNode( maxVAlue,k);
-        			return s;
-        		}
+        if (value.compareTo(root.getValue(i)) > 0 && i == root.getNumOfKeys() - 1) {
+            return sucesor(root.getChild(i + 1), value);
+        } else {
+            BTreeNode maxVAlue = root.getChild(i);
+            while (maxVAlue.getValue(0).compareTo(value) > 0 && maxVAlue.getChild(0) != null)
+                maxVAlue = maxVAlue.getChild(0);
+            for (int k = 0; k < maxVAlue.getNumOfKeys(); k++)
+                if (maxVAlue.getValue(k).compareTo(value) < 0) {
+                    String s = maxVAlue.getValue(k);
+                    deleteKeyFromNode(maxVAlue, k);
+                    return s;
+                }
         }
         return null;
     }
-    private BTreeNode predesor(BTreeNode root,String  value) {
-    	return null;
+
+    private BTreeNode predesor(BTreeNode root, String value) {
+        return null;
     }
 }
