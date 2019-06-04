@@ -50,12 +50,10 @@ public class BTree {
     }
 
     public boolean search(BTreeNode root, String key) {
-        int i = 0;
-        while (i < root.getNumOfKeys() - 1 && key.compareTo(root.getValue(i)) > 0) {
-            i++;
-        }
+        int i = indexOfNotGreater(root, key);
 
-        if (i <= root.getNumOfKeys() - 1 && key.equals(root.getValue(i))) {
+        // TODO: Check it's OK that we removed "i <= root.getNumOfKeys() - 1 &&"
+        if (key.equals(root.getValue(i))) {
             return true;
         }
 
@@ -103,7 +101,7 @@ public class BTree {
     }
 
     public void insert(String value) {
-    	value = value.toLowerCase();
+        value = value.toLowerCase();
         BTreeNode oldRoot = this.root;
         if (oldRoot.getNumOfKeys() == 2 * t - 1) {
             BTreeNode newRoot = new BTreeNode(t, null);
@@ -145,6 +143,16 @@ public class BTree {
         }
     }
 
+    // Get the index of the first key in the node that is not greater than the key parameter,
+    // or node.getNumOfKeys() if not found
+    private int indexOfNotGreater(BTreeNode node, String key) {
+        int i = 0;
+        while (i < node.getNumOfKeys() - 1 && key.compareTo(node.getValue(i)) > 0) {
+            i++;
+        }
+        return i;
+    }
+
 
     private void buildInorderRepresentation(BTreeNode root, int depth, StringJoiner treeStringJoiner) {
         if (root.isLeaf) {
@@ -165,6 +173,32 @@ public class BTree {
         }
     }
 
+    // Delete a key from this sub-tree, assuming this node has more at least t keys, or it's the tree root
+    public void delete(BTreeNode root, String key) {
+        int i = indexOfNotGreater(root, key);
+
+        if (key.equals(root.getValue(i))) {
+            deleteKeyFromNode(root, i);
+            return;
+        }
+
+        BTreeNode nextNode = root.getChild(i);
+        if (nextNode == null) {
+            return;
+        }
+        if (!nextNode.isLeaf) {
+            // TODO: Make sure the next node has at least t elements
+        }
+
+        delete(nextNode, key);
+    }
+
+    private void deleteKeyFromNode(BTreeNode node, int index) {
+        shiftKeysBackward(node, index);
+        shiftChildrenBackward(node, index);
+        node.setNumOfKeys(node.getNumOfKeys() - 1);
+    }
+
     private void shiftRight(BTreeNode parent, BTreeNode left, BTreeNode right, int keyIndex) {
         String leftKeyToShift = left.getValue(left.getNumOfKeys() - 1);
         BTreeNode childToShift = left.getChild(left.getNumOfKeys());
@@ -180,20 +214,17 @@ public class BTree {
 
         parent.setValue(keyIndex, leftKeyToShift);
 
-        // Delete left node last key and child
-        left.setValue(left.getNumOfKeys() - 1, "");
-        left.setChild(left.getNumOfKeys(), null);
-        left.setNumOfKeys(left.getNumOfKeys() - 1);
+        deleteKeyFromNode(left, left.getNumOfKeys() - 1);
     }
 
     private void shiftKeysForward(BTreeNode node) {
-        for (int i = node.getNumOfKeys(); i > 0 ; i--) {
+        for (int i = node.getNumOfKeys(); i > 0; i--) {
             node.setValue(i, node.getValue(i - 1));
         }
     }
 
     private void shiftChildrenForward(BTreeNode node) {
-        for (int i = node.getNumOfKeys() + 1; i > 0 ; i--) {
+        for (int i = node.getNumOfKeys() + 1; i > 0; i--) {
             node.setChild(i, node.getChild(i - 1));
         }
     }
@@ -210,20 +241,18 @@ public class BTree {
 
         parent.setValue(keyIndex, rightKeyToShift);
 
-        shiftKeysBackward(right);
-        shiftChildrenBackward(right);
-        right.setNumOfKeys(right.getNumOfKeys() - 1);
+        deleteKeyFromNode(right, 0);
     }
 
-    private void shiftKeysBackward(BTreeNode node) {
-        for (int i = 0; i < node.getNumOfKeys() - 1; i++) {
+    private void shiftKeysBackward(BTreeNode node, int fromIndex) {
+        for (int i = fromIndex; i < node.getNumOfKeys() - 1; i++) {
             node.setValue(i, node.getValue(i + 1));
         }
         node.setValue(node.getNumOfKeys() - 1, "");
     }
 
-    private void shiftChildrenBackward(BTreeNode node) {
-        for (int i = 0; i < node.getNumOfKeys(); i++) {
+    private void shiftChildrenBackward(BTreeNode node, int fromIndex) {
+        for (int i = fromIndex; i < node.getNumOfKeys(); i++) {
             node.setChild(i, node.getChild(i + 1));
         }
         node.setChild(node.getNumOfKeys(), null);
