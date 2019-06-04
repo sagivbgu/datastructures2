@@ -18,8 +18,15 @@ public class Utils {
 
     public static String getElapsedTimeInMs(Runnable action) {
         long startTime = System.nanoTime();
-        action.run();
-        long elapsedNanos = System.nanoTime() - startTime;
-        return String.valueOf(elapsedNanos / 1000000);
+        Thread actionThread = new Thread(action);
+        actionThread.start();
+        try {
+            actionThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        long endTime = System.nanoTime();
+        double elapsedTime = (endTime - startTime) / 1000000.0;
+        return String.format("%.4f", elapsedTime);
     }
 }
