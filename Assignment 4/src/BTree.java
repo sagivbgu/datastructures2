@@ -177,20 +177,19 @@ public class BTree {
     public void delete(BTreeNode root, String key) {
         int i = indexOfNotGreater(root, key);
 
-        if (key.equals(root.getValue(i))) {
-            deleteKeyFromNode(root, i);
-            return;
+        if (!key.equals(root.getValue(i))) {
+            BTreeNode nextNode = root.getChild(i);
+            if (nextNode != null) {
+                // TODO: Make sure the next node has at least t elements
+                delete(nextNode, key);
+            }
         }
-
-        BTreeNode nextNode = root.getChild(i);
-        if (nextNode == null) {
-            return;
+        else {
+            if (root.isLeaf) {
+                deleteKeyFromNode(root, i);
+            }
+            // TODO
         }
-        if (!nextNode.isLeaf) {
-            // TODO: Make sure the next node has at least t elements
-        }
-
-        delete(nextNode, key);
     }
 
     private void deleteKeyFromNode(BTreeNode node, int index) {
@@ -257,6 +256,8 @@ public class BTree {
         }
         node.setChild(node.getNumOfKeys(), null);
     }
+
+    // TODO: Refactor
     private void Merge(BTreeNode root,int i) {
     	BTreeNode MergingChiled=root.getChild(i);
     	if(i>0 && root.getChild(i-1).getNumOfKeys()<t)
@@ -299,5 +300,4 @@ public class BTree {
     		root.setChild(i, null);
     	}
     }
-    
 }
