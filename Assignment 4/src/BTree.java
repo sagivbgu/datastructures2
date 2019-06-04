@@ -326,7 +326,7 @@ public class BTree {
         }
 
         mergedChild.setNumOfKeys(mergedChild.getNumOfKeys() + mergingChild.getNumOfKeys());
-        deleteKeyFromNode(root, i - 1);
+        deleteKeyFromNode(root, i);
         return mergedChild;
     }
 
