@@ -228,4 +228,47 @@ public class BTree {
         }
         node.setChild(node.getNumOfKeys(), null);
     }
+    private void Merge(BTreeNode root,int i) {
+    	BTreeNode MergingChiled=root.getChild(i);
+    	if(i>0 && root.getChild(i-1).getNumOfKeys()<t)
+    	{
+    		BTreeNode LeftChiled=root.getChild(i-1);
+    		int numofkeys=root.getChild(i-1).getNumOfKeys();
+    		LeftChiled.setValue(numofkeys, root.getValue(i-1));
+    		LeftChiled.setNumOfKeys(LeftChiled.getNumOfKeys()+1);
+    		root.setValue(i-1, "");
+    		numofkeys++;
+    		root.setNumOfKeys(root.getNumOfKeys()-1);
+    		for(int j=0;j<numofkeys+MergingChiled.getNumOfKeys();j++)
+    		{
+    			LeftChiled.setValue(numofkeys+j, MergingChiled.getValue(j));
+    			LeftChiled.setNumOfKeys(LeftChiled.getNumOfKeys()+1);
+    		}
+    		for(int j=0;j<2*t;j++)
+    		{
+    			LeftChiled.setChild(LeftChiled.getNumOfKeys(), MergingChiled.getChild(j));
+    		}
+    		root.setChild(i, null);
+    	}
+    	else if(i+1<2*t){
+    		BTreeNode RightChiled=root.getChild(i+1);
+    		int numofkeys=RightChiled.getNumOfKeys();
+    		RightChiled.setValue(numofkeys, root.getValue(i));
+    		RightChiled.setNumOfKeys(RightChiled.getNumOfKeys()+1);
+    		root.setValue(i, "");
+    		numofkeys++;
+    		root.setNumOfKeys(root.getNumOfKeys()-1);
+    		for(int j=0;j<numofkeys+MergingChiled.getNumOfKeys();j++)
+    		{
+    			RightChiled.setValue(numofkeys+j, MergingChiled.getValue(j));
+    			RightChiled.setNumOfKeys(RightChiled.getNumOfKeys()+1);
+    		}
+    		for(int j=0;j<2*t;j++)
+    		{
+    			RightChiled.setChild(RightChiled.getNumOfKeys(), MergingChiled.getChild(j));
+    		}
+    		root.setChild(i, null);
+    	}
+    }
+    
 }
