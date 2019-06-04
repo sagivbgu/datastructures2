@@ -232,16 +232,6 @@ public class BTree {
         return child;
     }
 
-    private BTreeNode decideNodeToDeleteFrom(BTreeNode root, String key, int i) {
-        BTreeNode childNode;
-        if (key.compareTo(root.getValue(i)) > 0) {
-            childNode = root.getChild(i + 1);
-        } else {
-            childNode = root.getChild(i);
-        }
-        return childNode;
-    }
-
     private void deleteKeyFromNode(BTreeNode node, int index) {
         shiftKeysBackward(node, index);
         shiftChildrenBackward(node, index);
