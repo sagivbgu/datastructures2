@@ -7,7 +7,6 @@ import java.nio.file.*;
 public class BloomFilter {
     private HashFunctionData[] functions;
     private boolean[] bloomFilterArray;
-    private static int p = 15486907;
 
     public BloomFilter(String tableSize, String hashFunctionsFilePath) {
         int arraySize;
@@ -39,25 +38,27 @@ public class BloomFilter {
     }
 
     public String getFalsePositivePercentage(HashTable hashTable, String requestedPasswordsFilePath) {
-        int i = 0;
         int falsePositives = 0;
+        int totalPermittedPasswords = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(requestedPasswordsFilePath))) {
             String line = br.readLine();
             while (line != null) {
                 long hornerValue = Utils.getHornerValue(line);
-                if (isKeyInBloomFilter(hornerValue) && hashTable.search(hornerValue) == null) {
-                    falsePositives++;
-                }
+                if (hashTable.search(hornerValue) == null) {
+                    totalPermittedPasswords++;
 
-                i++;
+                    if (isKeyInBloomFilter(hornerValue)) {
+                        falsePositives++;
+                    }
+                }
                 line = br.readLine();
             }
         } catch (IOException e) {
             throw new RuntimeException("Error reading file. Can't get false positive percentage", e);
         }
 
-        return String.valueOf((double) falsePositives / i);
+        return String.valueOf((double) falsePositives / totalPermittedPasswords);
     }
 
     public String getRejectedPasswordsAmount(String requestedPasswordsFilePath) {
