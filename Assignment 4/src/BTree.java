@@ -280,6 +280,7 @@ public class BTree {
     		}
     		root.setChild(i, null);
     	}
+    	
     	else if(i+1<2*t){
     		BTreeNode RightChiled=root.getChild(i+1);
     		int numofkeys=RightChiled.getNumOfKeys();
@@ -299,5 +300,30 @@ public class BTree {
     		}
     		root.setChild(i, null);
     	}
+    }
+    private String sucesor(BTreeNode root,String  value) {
+        int i = 0;
+        while (i < root.getNumOfKeys() - 1 && value.compareTo(root.getValue(i)) > 0) {
+            i++;
+        }
+        if (value.compareTo(root.getValue(i)) > 0 && i==root.getNumOfKeys()-1) {
+        	return sucesor( root.getChild(i+1),value);
+        }
+        else{
+        	BTreeNode maxVAlue=root.getChild(i);
+        	while(maxVAlue.getValue(0).compareTo(value)>0 && maxVAlue.getChild(0)!=null)
+        		maxVAlue=maxVAlue.getChild(0);
+        	for(int k=0;k<maxVAlue.getNumOfKeys();k++)
+        		if(maxVAlue.getValue(k).compareTo(value) <0)
+        		{
+        			String s=maxVAlue.getValue(k);
+        			deleteKeyFromNode( maxVAlue,k);
+        			return s;
+        		}
+        }
+        return null;
+    }
+    private BTreeNode predesor(BTreeNode root,String  value) {
+    	return null;
     }
 }
