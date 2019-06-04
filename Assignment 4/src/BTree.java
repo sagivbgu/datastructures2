@@ -35,7 +35,11 @@ public class BTree {
     }
 
     public void deleteKeysFromTree(String keysToDeleteFilePath) {
-        // TODO
+        try {
+            Files.lines(Paths.get(keysToDeleteFilePath)).forEach(key -> delete(root, key));
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file. Can't delete keys from Btree", e);
+        }
     }
 
     public String getSearchTime(String requestedPasswordsFilePath) {
