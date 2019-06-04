@@ -164,4 +164,68 @@ public class BTree {
             }
         }
     }
+
+    private void shiftRight(BTreeNode parent, BTreeNode left, BTreeNode right, int keyIndex) {
+        String leftKeyToShift = left.getValue(left.getNumOfKeys() - 1);
+        BTreeNode childToShift = left.getChild(left.getNumOfKeys());
+
+        shiftKeysForward(right);
+        shiftChildrenForward(right);
+
+        // Add key and child to the right node
+        String parentKeyToShift = parent.getValue(keyIndex);
+        right.setValue(0, parentKeyToShift);
+        right.setChild(0, childToShift);
+        right.setNumOfKeys(right.getNumOfKeys() + 1);
+
+        parent.setValue(keyIndex, leftKeyToShift);
+
+        // Delete left node last key and child
+        left.setValue(left.getNumOfKeys() - 1, "");
+        left.setChild(left.getNumOfKeys(), null);
+        left.setNumOfKeys(left.getNumOfKeys() - 1);
+    }
+
+    private void shiftKeysForward(BTreeNode node) {
+        for (int i = node.getNumOfKeys(); i > 0 ; i--) {
+            node.setValue(i, node.getValue(i - 1));
+        }
+    }
+
+    private void shiftChildrenForward(BTreeNode node) {
+        for (int i = node.getNumOfKeys() + 1; i > 0 ; i--) {
+            node.setChild(i, node.getChild(i - 1));
+        }
+    }
+
+    private void shiftLeft(BTreeNode parent, BTreeNode left, BTreeNode right, int keyIndex) {
+        String rightKeyToShift = right.getValue(0);
+        BTreeNode childToShift = right.getChild(0);
+
+        // Add key and child to the left node
+        String parentKeyToShift = parent.getValue(keyIndex);
+        left.setValue(left.getNumOfKeys() - 1, parentKeyToShift);
+        left.setChild(left.getNumOfKeys(), childToShift);
+        left.setNumOfKeys(right.getNumOfKeys() + 1);
+
+        parent.setValue(keyIndex, rightKeyToShift);
+
+        shiftKeysBackward(right);
+        shiftChildrenBackward(right);
+        right.setNumOfKeys(right.getNumOfKeys() - 1);
+    }
+
+    private void shiftKeysBackward(BTreeNode node) {
+        for (int i = 0; i < node.getNumOfKeys() - 1; i++) {
+            node.setValue(i, node.getValue(i + 1));
+        }
+        node.setValue(node.getNumOfKeys() - 1, "");
+    }
+
+    private void shiftChildrenBackward(BTreeNode node) {
+        for (int i = 0; i < node.getNumOfKeys(); i++) {
+            node.setChild(i, node.getChild(i + 1));
+        }
+        node.setChild(node.getNumOfKeys(), null);
+    }
 }
