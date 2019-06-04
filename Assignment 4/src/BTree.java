@@ -298,36 +298,30 @@ public class BTree {
     }
 
     private BTreeNode merge(BTreeNode root, int i) {
-        BTreeNode mergingChild = root.getChild(i);
-        BTreeNode mergedChild = getMergedChild(root, i);
-
-        // Insert the value from the parent to the end of mergedChild
-        mergedChild.setValue(mergedChild.getNumOfKeys(), root.getValue(i));
-        mergedChild.setNumOfKeys(mergedChild.getNumOfKeys() + 1);
-
-        // Append keys from mergingChild to mergedChild
-        for (int j = 0; j < mergingChild.getNumOfKeys(); j++) {
-            mergedChild.setValue(mergedChild.getNumOfKeys() + j, mergingChild.getValue(j));
-        }
-
-        // Append children from mergingChild to mergedChild
-        for (int j = 0; j < mergingChild.getNumOfKeys() + 1; j++) {
-            mergedChild.setChild(mergedChild.getNumOfKeys() + j, mergingChild.getChild(j));
-        }
-
-        mergedChild.setNumOfKeys(mergedChild.getNumOfKeys() + mergingChild.getNumOfKeys());
-        deleteKeyFromNode(root, i);
-        return mergedChild;
-    }
-
-    private BTreeNode getMergedChild(BTreeNode root, int i) {
-        BTreeNode mergedChild;
+        int leftChildIndex = i;
         if (i > 0) {
-            mergedChild = root.getChild(i - 1);
-        } else {
-            mergedChild = root.getChild(i + 1);
+            i++;
         }
-        return mergedChild;
+        BTreeNode leftChild = root.getChild(leftChildIndex);
+        BTreeNode rightChild = root.getChild(leftChildIndex+1);
+
+        // Insert the value from the parent to the end of leftChild
+        leftChild.setValue(leftChild.getNumOfKeys(), root.getValue(i));
+        leftChild.setNumOfKeys(leftChild.getNumOfKeys() + 1);
+
+        // Append keys from rightChild to leftChild
+        for (int j = 0; j < rightChild.getNumOfKeys(); j++) {
+            leftChild.setValue(leftChild.getNumOfKeys() + j, rightChild.getValue(j));
+        }
+
+        // Append children from rightChild to leftChild
+        for (int j = 0; j < rightChild.getNumOfKeys() + 1; j++) {
+            leftChild.setChild(leftChild.getNumOfKeys() + j, rightChild.getChild(j));
+        }
+
+        leftChild.setNumOfKeys(leftChild.getNumOfKeys() + rightChild.getNumOfKeys());
+        deleteKeyFromNode(root, i);
+        return leftChild;
     }
 
     private String getSuccessor(BTreeNode root, int keyIndex) {
