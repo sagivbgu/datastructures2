@@ -2,11 +2,11 @@ public class Utils {
     private static int p = 15486907;
 
     public static long getHornerValue(String str) {
-        int hornerValue = 0;
+        long hornerValue = 0;
         int length = str.length();
         for (int i = 0; i < length; i++) {
             int charValue = (int) str.charAt(i);
-            hornerValue = hornerValue * 256 + charValue;
+            hornerValue = (hornerValue * 256 + charValue) % p;
         }
         return hornerValue;
     }
