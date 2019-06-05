@@ -13,6 +13,10 @@ class HashTable {
         } catch (NumberFormatException e) {
             throw new RuntimeException("Hash table size isn't an integer", e);
         }
+        if (this.size < 1) {
+            throw new RuntimeException("Hash table size is invalid");
+        }
+
         this.elementsNum = 0;
         this.hashLists = getHashListsArray(this.size);
     }

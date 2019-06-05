@@ -15,6 +15,10 @@ public class BloomFilter {
         } catch (NumberFormatException e) {
             throw new RuntimeException("Bloom filter table size isn't an integer", e);
         }
+        if (arraySize < 1) {
+            throw new RuntimeException("Bloom filter table size is invalid");
+        }
+
         bloomFilterArray = new boolean[arraySize];
         initFunctionsArray(hashFunctionsFilePath);
     }

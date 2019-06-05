@@ -14,6 +14,9 @@ public class BTree {
         } catch (NumberFormatException e) {
             throw new RuntimeException("BTree size isn't an integer", e);
         }
+        if (tVal < 1) {
+            throw new RuntimeException("BTree size is invalid");
+        }
         this.t = tVal;
 
         root = new BTreeNode(tVal);
@@ -46,7 +49,7 @@ public class BTree {
         return Utils.getElapsedTimeInMs(() -> {
             try {
                 Files.lines(Paths.get(requestedPasswordsFilePath))
-                        .forEach(password -> search(root, password));
+                        .forEach(password -> search(root, password.toLowerCase()));
             } catch (IOException e) {
                 throw new RuntimeException("Error reading file. Can't get B-Tree search time", e);
             }
@@ -178,6 +181,7 @@ public class BTree {
 
     // Delete a key from this sub-tree, assuming this node has more at least t keys, or it's the tree root
     public void delete(BTreeNode root, String key) {
+        key = key.toLowerCase();
         int i = indexOfNotGreater(root, key);
 
         if (!key.equals(root.getValue(i))) {
