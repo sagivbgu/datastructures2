@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 
 public class BTree {
     private int t;
-    BTreeNode root;
+    private BTreeNode root;
 
     public BTree(String t) {
         int tVal;
@@ -16,7 +16,7 @@ public class BTree {
         }
         this.t = tVal;
 
-        root = new BTreeNode(tVal, null);
+        root = new BTreeNode(tVal);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class BTree {
 
     public void split(BTreeNode parentNode, int i) {
         BTreeNode nodeToSplit = parentNode.getChild(i);
-        BTreeNode rightNode = new BTreeNode(t, parentNode);
+        BTreeNode rightNode = new BTreeNode(t);
         rightNode.isLeaf = nodeToSplit.isLeaf;
         rightNode.setNumOfKeys(t - 1);
 
@@ -107,7 +107,7 @@ public class BTree {
         value = value.toLowerCase();
         BTreeNode oldRoot = this.root;
         if (oldRoot.getNumOfKeys() == 2 * t - 1) {
-            BTreeNode newRoot = new BTreeNode(t, null);
+            BTreeNode newRoot = new BTreeNode(t);
             this.root = newRoot;
             newRoot.isLeaf = false;
             newRoot.setChild(0, oldRoot);
@@ -117,7 +117,7 @@ public class BTree {
             insertNonFull(oldRoot, value);
     }
 
-    public void insertNonFull(BTreeNode node, String key) {
+    private void insertNonFull(BTreeNode node, String key) {
         int i = node.getNumOfKeys() - 1;
 
         if (node.isLeaf) {

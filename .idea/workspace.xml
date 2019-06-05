@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bdc12998-52cb-4dc2-8e13-d2e26a6104ce" name="Default Changelist" comment="Minor change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 4/src/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/BloomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment 4/src/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/BTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment 4/src/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 4/src/HashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment 4/src/example_output.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+            <state relative-caret-position="99">
+              <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,67 +34,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="120">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
               <folding>
-                <element signature="e#502#503#0" expanded="true" />
-                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#628#629#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="e#707#708#0" expanded="true" />
+                <element signature="e#745#746#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#993#994#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-154">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/requested_passwords.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/bad_passwords.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignment 4/src/output.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
@@ -102,10 +71,47 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignment 4/src/example_output.txt">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashListElement.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1408">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/README.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,9 +136,20 @@
       <find>order</find>
       <find>insert(</find>
       <find>parent</find>
-      <find>search</find>
       <find>buffer</find>
+      <find>deleteKey</find>
+      <find>search</find>
+      <find>delete(</find>
+      <find>mergedChild</find>
+      <find>mergingChild</find>
+      <find>delete</find>
+      <find>isLea</find>
+      <find>merge</find>
     </findStrings>
+    <replaceStrings>
+      <replace>leftChild</replace>
+      <replace>rightChild</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,29 +166,32 @@
         <option value="$PROJECT_DIR$/Assignment 4/src/Hasher.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/FuncshenLink.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/FunctionLink.java" />
-        <option value="$PROJECT_DIR$/Assignment 4/src/HashFunctionData.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/TestMain.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/HashListElement.java" />
-        <option value="$PROJECT_DIR$/Assignment 4/src/HashList.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/Node.java" />
         <option value="$PROJECT_DIR$/Assignment 4/tests/MainTest.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/Runner.java" />
         <option value="$PROJECT_DIR$/Assignment 4/tests/BTreeTest1.java" />
-        <option value="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" />
-        <option value="$PROJECT_DIR$/Assignment 4/src/BTree.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/requested_passwords.txt" />
-        <option value="$PROJECT_DIR$/Assignment 4/src/HashTable.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/output.txt" />
         <option value="$PROJECT_DIR$/Assignment 4/src/Utils.java" />
         <option value="$PROJECT_DIR$/Assignment 4/src/BloomFilter.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/HashFunctionData.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/HashList.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/BTree.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/Main.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/HashTable.java" />
+        <option value="$PROJECT_DIR$/Assignment 4/src/BTreeNode.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="697" />
-    <option name="height" value="735" />
+    <option name="x" value="-3" />
+    <option name="y" value="28" />
+    <option name="width" value="1010" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -234,16 +254,22 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment 4/src" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SLap\IdeaProjects\datastructures2\Assignment 4\tests" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SLap\IdeaProjects\datastructures2\Assignment 4\src" />
       <recent name="C:\Users\SLap\IdeaProjects\datastructures2\Assignment 4\tests\self_testing" />
       <recent name="C:\Users\SLap\IdeaProjects\datastructures2\Assignment 4\tests" />
     </key>
@@ -261,16 +287,55 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Runner">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="datastructures2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment 4/src" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Runner" />
+      <module name="datastructures2" />
+      <option name="PROGRAM_PARAMETERS" value="32 32 2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment 4/src" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DSchecker.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/Assignment 4/src/DSchecker.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Scratch (1)" type="Java Scratch" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Scratch" />
+      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scratch" type="Java Scratch" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Scratch" />
+      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Runner" />
-      <item itemvalue="Application.TestMain" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.DSchecker.jar" />
       <item itemvalue="Java Scratch.Scratch" />
+      <item itemvalue="Java Scratch.Scratch (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Runner" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.DSchecker.jar" />
+        <item itemvalue="Java Scratch.Scratch (1)" />
         <item itemvalue="Java Scratch.Scratch" />
-        <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>
   </component>
@@ -425,34 +490,148 @@
       <option name="project" value="LOCAL" />
       <updated>1559659140643</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Corrected bug in get rejected percentage">
+      <created>1559659818388</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1559659818388</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Minor change">
+      <created>1559659924119</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1559659924119</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Implemented BTree shiftRight and shiftLeft (not tested yet)">
+      <created>1559667150545</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1559667150545</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Implemented shift right and left, partially implemented delete from tree&#10;Minor change in search">
+      <created>1559671485787</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1559671485787</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Refactored delete from tree method">
+      <created>1559672445880</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1559672445880</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Refactored merge">
+      <created>1559675072018</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1559675072018</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Refactored getSuccessor and getPredecessor">
+      <created>1559676528090</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1559676528090</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Implemented BTree delete">
+      <created>1559682636281</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1559682636281</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Implemented deleteKeysFromTree">
+      <created>1559682772091</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1559682772091</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Corrected bugs">
+      <created>1559684378011</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1559684378011</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Corrected bug">
+      <created>1559684595598</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1559684595598</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Removed redundant code">
+      <created>1559684688735</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1559684688735</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Changed merge">
+      <created>1559686914884</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1559686914884</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Bugfixes">
+      <created>1559691448689</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1559691448705</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Modifications before submitting">
+      <created>1559694454160</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1559694454160</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49878347" visible="true" weight="0.17397882" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49878347" visible="true" weight="0.17397882" />
       <window_info id="Structure" order="1" sideWeight="0.50121653" side_tool="true" weight="0.17397882" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Extract Method" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32569557" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.32569557" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.32569557" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.32569557" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3289689" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -489,15 +668,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored BloomFilter&#10;Added Utils with hashing logic&#10;Corrected horner's value calculation" />
-    <MESSAGE value="Partial implementation of HashListElement and HashList" />
-    <MESSAGE value="HashTable implementation" />
-    <MESSAGE value="Corrected HashTable.search to receive long (not int)" />
-    <MESSAGE value="Implemented getFalsePositivePercentage and getRejectedPasswordsAmount in BloomFilter" />
-    <MESSAGE value="Added exception handling in case of invalid input" />
-    <MESSAGE value="Implemented getSearchTime in HashTable" />
-    <MESSAGE value="Removed redundant methods" />
-    <MESSAGE value="Refactor" />
     <MESSAGE value="Change 'search' return value to boolean" />
     <MESSAGE value="Change from StringBuilder to StringJoiner&#10;Minor changes" />
     <MESSAGE value="Added self_testing from the assignment page and separated tests from code" />
@@ -506,17 +676,31 @@
     <MESSAGE value="Corrected B-Tree split and insert" />
     <MESSAGE value="Changes to tests" />
     <MESSAGE value="Discarded changes" />
-    <MESSAGE value="Minor change" />
     <MESSAGE value="Corrected horner value bug" />
     <MESSAGE value="Corrected getElapsedTimeInMs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected getElapsedTimeInMs" />
+    <MESSAGE value="Corrected bug in get rejected percentage" />
+    <MESSAGE value="Minor change" />
+    <MESSAGE value="Implemented BTree shiftRight and shiftLeft (not tested yet)" />
+    <MESSAGE value="Implemented shift right and left, partially implemented delete from tree&#10;Minor change in search" />
+    <MESSAGE value="Refactored delete from tree method" />
+    <MESSAGE value="Refactored merge" />
+    <MESSAGE value="Refactored getSuccessor and getPredecessor" />
+    <MESSAGE value="Implemented BTree delete" />
+    <MESSAGE value="Implemented deleteKeysFromTree" />
+    <MESSAGE value="Corrected bugs" />
+    <MESSAGE value="Corrected bug" />
+    <MESSAGE value="Removed redundant code" />
+    <MESSAGE value="Changed merge" />
+    <MESSAGE value="Bugfixes" />
+    <MESSAGE value="Modifications before submitting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifications before submitting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java</url>
-          <line>111</line>
+          <line>104</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -527,26 +711,58 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java</url>
-          <line>66</line>
+          <url>file://$PROJECT_DIR$/Assignment 4/src/BTree.java</url>
+          <line>180</line>
           <properties />
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Assignment 4/src/Utils.java</url>
-          <line>19</line>
+          <condition expression="leftChild == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/Assignment 4/src/BTree.java</url>
+          <line>201</line>
           <properties />
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="nextChild==null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/Assignment 4/src/BTree.java</url>
+          <line>229</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Assignment 4/src/BTree.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Assignment 4/src/BTree.java</url>
+          <line>169</line>
+          <properties />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="isKeyInBloomFilter(Utils.getHornerValue(line))" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>nextChild==null</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>leftChild == null</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i == 0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="watch">
       <expression>
         <expression-string>isKeyInBloomFilter(Utils.getHornerValue(line))</expression-string>
@@ -560,6 +776,21 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>root.getNumOfKeys() + 1</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>child.toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>node.getNumOfKeys() - 1</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>String.valueOf(elapsedNanos / 1000000)</expression-string>
         <language-id>JAVA</language-id>
@@ -590,31 +821,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>(9 * 8097880544751088228L + 2)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(9 * 8097880544751088228 + 2)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(a * (a * hornerValue + b)+ b)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/lang/Iterable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/util/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -647,20 +856,10 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/Hasher.java" />
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/delete_keys.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/io/PrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="879" column="16" selection-start-line="879" selection-start-column="16" selection-end-line="879" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/Link.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -696,13 +895,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/TestMain.java" />
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashFunctionData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="29" selection-start-column="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/lang/Character.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -711,13 +903,6 @@
             <element signature="e#318046#318047#0" expanded="true" />
             <element signature="e#318094#318095#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -742,9 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashListElement.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/output2.txt" />
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/nio/file/Files.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -764,18 +946,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/tests/MainTest.java" />
     <entry file="file://$PROJECT_DIR$/Assignment 4/tests/BloomFilterTest.java" />
-    <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/README.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/tests/BTreeTest1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -790,23 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="1204" selection-start-line="1204" selection-end-line="1204" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,20 +1009,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-154">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="277" column="7" lean-forward="true" selection-start-line="277" selection-start-column="7" selection-end-line="277" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/delete_keys.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding>
+            <element signature="e#59#60#0" expanded="true" />
+            <element signature="e#113#114#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -878,21 +1037,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashFunctionData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2729">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/Link.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashListElement.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTree.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1408">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/tests/self_testing/README.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/io/FileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <caret line="154" column="8" selection-start-line="154" selection-start-column="8" selection-end-line="154" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/io/FileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -901,10 +1124,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignment 4/src/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+        <state relative-caret-position="99">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/HashTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding>
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -913,16 +1165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment 4/src/BloomFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

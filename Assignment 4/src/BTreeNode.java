@@ -2,11 +2,9 @@ public class BTreeNode {
     private int currentKeysCount; // Number of keys in the node
     private String[] keys;
     private BTreeNode[] children;
-    private BTreeNode parent;
     boolean isLeaf;
 
-    public BTreeNode(int t, BTreeNode parent) {
-        this.parent = parent;
+    public BTreeNode(int t) {
         keys = new String[2 * t - 1];
         for (int i = 0; i < keys.length; i++) {
             keys[i] = "";
@@ -35,9 +33,6 @@ public class BTreeNode {
 
     public int getNumOfKeys() {
         return currentKeysCount;
-    }
-    public BTreeNode getPerent() {
-        return parent;
     }
 
     public void setNumOfKeys(int keys) {
