@@ -1,6 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 class HashTable {
@@ -45,7 +46,7 @@ class HashTable {
 
     public void insert(long key) {
         if ((elementsNum + 1) / size >= 1) {
-            size = size * 2; // TODO: Needed?
+            size = size * 2;
             rehash(size);
         }
 
@@ -86,42 +87,4 @@ class HashTable {
         int index = hashFunction(key);
         hashLists[index].insert(key);
     }
-    // TODO
-/*
-    public String remove(String key)
-    {
-        int bucketIndex = hashFunction(key);
-
-        // Get head of chain
-        HashNode<K, V> head = hashLists.get(bucketIndex);
-
-        // Search for key in its chain
-        HashNode<K, V> prev = null;
-        while (head != null)
-        {
-            // If Key found
-            if (head.key.equals(key))
-                break;
-
-            // Else keep moving in chain
-            prev = head;
-            head = head.next;
-        }
-
-        // If key was not there
-        if (head == null)
-            return null;
-
-        // Reduce elementsNum
-        elementsNum--;
-
-        // Remove key
-        if (prev != null)
-            prev.next = head.next;
-        else
-            hashLists.set(bucketIndex, head.next);
-
-        return head.value;
-    }
-*/
 }

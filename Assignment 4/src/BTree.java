@@ -56,7 +56,6 @@ public class BTree {
     public boolean search(BTreeNode root, String key) {
         int i = indexOfNotGreater(root, key);
 
-        // TODO: Check it's OK that we removed "i <= root.getNumOfKeys() - 1 &&"
         if (key.equals(root.getValue(i))) {
             return true;
         }

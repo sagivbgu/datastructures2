@@ -40,40 +40,4 @@ public class BTreeNode {
     public void setNumOfKeys(int keys) {
         currentKeysCount = keys;
     }
-
-    public BTreeNode getParent() {
-        return parent;
-    }
-
-    public void setParent(BTreeNode parent) {
-        this.parent = parent;
-    }
-
-    public int indexOf(String value) {
-        for (int i = 0; i < getNumOfKeys(); i++) {
-            if (keys[i].equals(value)) return i;
-        }
-        return -1;
-    }
-
-    public String removeKey(String value) {
-        String removed = null;
-        boolean found = false;
-        if (currentKeysCount == 0) return null;
-        for (int i = 0; i < currentKeysCount; i++) {
-            if (keys[i].equals(value)) {
-                found = true;
-                removed = keys[i];
-            } else if (found) {
-                // shift the rest of the keys down
-                keys[i - 1] = keys[i];
-            }
-        }
-        if (found) {
-            currentKeysCount--;
-            keys[currentKeysCount] = null;
-        }
-        return removed;
-    }
-
 }
