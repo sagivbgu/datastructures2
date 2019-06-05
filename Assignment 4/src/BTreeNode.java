@@ -36,6 +36,9 @@ public class BTreeNode {
     public int getNumOfKeys() {
         return currentKeysCount;
     }
+    public BTreeNode getPerent() {
+        return parent;
+    }
 
     public void setNumOfKeys(int keys) {
         currentKeysCount = keys;
